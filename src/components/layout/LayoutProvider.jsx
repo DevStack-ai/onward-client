@@ -1,6 +1,9 @@
 import { createContext, useEffect } from "react"
 import Header from "./core/header"
 import Footer from "./core/footer"
+import AsideMenu from "./core/asidemenu"
+
+import { useAuth } from "../../providers"
 
 const LayoutContext = createContext({
     useModal: (event, content) => { },
@@ -29,35 +32,41 @@ const LayoutProvider = ({ children }) => {
         enableSplashScreen()
         const bodyClasses = Array.from(document.body.classList)
         bodyClasses.forEach((cl) => document.body.classList.remove(cl))
-        // LayoutSetup.updatePartialConfig(_themeConfig)
-        // setConfig(Object.assign({}, LayoutSetup.config))
-        // setClasses(LayoutSetup.classes)
-        // setAttributes(LayoutSetup.attributes)
-        // setCSSVariables(LayoutSetup.cssVariables)
+
         setTimeout(() => {
             disableSplashScreen()
         }, 500)
     }
 
     const value = {
-        // config,
-        // classes,
-        // attributes,
-        // cssVariables,
+
         setLayout,
     }
 
     useEffect(() => {
         disableSplashScreen()
     }, [])
-
-
+    const { currentUser } = useAuth()
+    console.log(currentUser)
+    if (currentUser) {
+        return <>
+            <LayoutContext.Provider value={value}>
+                <div className="app-container">
+                    <Header />
+                    <AsideMenu />
+                    <div className="layout-container">
+                        {children}
+                    </div>
+                    <Footer />
+                </div>
+            </LayoutContext.Provider>
+        </>
+    }
     return (
         <LayoutContext.Provider value={value}>
             <div className="app-container">
-                <Header />
                 {children}
-                <Footer />
+
             </div>
         </LayoutContext.Provider>
     )

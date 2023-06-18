@@ -16,7 +16,7 @@ body.page-loading {
   align-items: center;
   justify-content: center;
   flex-direction: column;
-  font-family: Inter, Helvetica, 'sans-serif';
+  font-family: Helvetica, 'sans-serif';
   background-color: #f9f9f9;
   color: #5e6278;
   line-height: 1;

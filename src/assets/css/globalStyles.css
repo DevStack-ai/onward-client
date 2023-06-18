@@ -1,3 +1,13 @@
+* {
+    font-family: Helvetica
+}
+
+*,
+::before,
+::after {
+    box-sizing: border-box
+}
+
 html {
     height: 100%;
 }
@@ -5,18 +15,18 @@ html {
 body {
     width: 100%;
     background: rgb(52, 140, 212);
-    background: -moz-linear-gradient(0deg, rgba(52, 140, 212, 1) 65%, rgba(234, 234, 234, 1) 65%);
-    background: -webkit-linear-gradient(0deg, rgba(52, 140, 212, 1) 65%, rgba(234, 234, 234, 1) 65%);
-    background: linear-gradient(0deg, rgba(52, 140, 212, 1) 65%, rgba(234, 234, 234, 1) 65%);
+    background: -moz-linear-gradient(0deg, #EAEAEA 85%, #348CD4 85%);
+    background: -webkit-linear-gradient(0deg, #EAEAEA 85%, #348CD4 85%);
+    background: linear-gradient(0deg, #EAEAEA 85%, #348CD4 85%);
     height: 100%;
     margin: 0;
     background-repeat: no-repeat;
-    background-attachment: fixed;    
+    background-attachment: fixed;
 }
 
-h1 {
+h2 {
     font-weight: bold;
-    font-size: 4em;
+    font-size: 3em;
 }
 
 h5 {
@@ -28,15 +38,29 @@ h5 {
     border: none;
     border-radius: 20px;
     background-color: white;
-    box-shadow: 0px 50px 33px -21px rgba(0, 0, 0, 0.2);
+    box-shadow: 0px 50px 35px -20px rgba(0, 0, 0, 0.1);
+    margin-top: 25px;
+    padding: 3em;
+    min-height: 80vh;
+}
+
+.login-container {
+    border: none;
+    border-radius: 20px;
+    width: 50%;
+    background-color: white;
+    box-shadow: 0px 50px 33px -21px rgba(0, 0, 0, 0.1);
     margin-top: 25px;
 }
 
 .btn-onward {
+    cursor: pointer;
     font-weight: bold;
     color: white;
-    padding: 10px 20px;
-    font-size: 1.5em;
+    border-radius: 10px;
+    padding: 10px 10px;
+    font-size: 15px;
+    border: none;
     background-color: #FF9800;
     transition: all .2s;
 }
@@ -44,4 +68,103 @@ h5 {
 .btn-onward:hover {
     color: white;
     background-color: #348CD4;
+}
+
+.bg-green {
+    background-color: forestgreen;
+}
+
+.centered {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.layout-container {
+    padding: 50px 0px 0px 280px;
+}
+
+.opacity-0 {
+    opacity: 0;
+}
+
+.fw-bold{
+    font-weight: bold;
+}
+.tableFixHead {
+    overflow: auto;
+    height: 100px;
+}
+
+.tableFixHead thead th {
+    position: sticky;
+    top: 0;
+    z-index: 1;
+}
+
+.table-overflow {
+    min-height: 60vh;
+    overflow-y: scroll;
+}
+
+@media (min-width: 768px) {
+    .mobile {
+        display: none;
+    }
+
+    .dekstop {
+        display: block;
+    }
+}
+
+@media (max-width: 767.98px) {
+    .mobile {
+        display: block;
+    }
+
+    .dekstop {
+        display: none;
+    }
+
+    .layout-container {
+        padding: 10px 0px;
+    }
+
+    .login-container {
+        width: 100%;
+    }
+}
+
+.actions-container .actions {
+    margin: 0;
+    padding: 0;
+    opacity: 1;
+}
+
+@media (min-width: 768px) {
+    .actions-container .actions {
+        opacity: 0;
+    }
+}
+
+
+
+/* input[type="date"]::-webkit-calendar-picker-indicator {
+  background: none;
+} */
+/* .actions-container {
+  cursor: pointer;
+} */
+.collapsed-transition {
+    transition: all 2s ease-in-out;
+}
+
+.actions-container:hover .actions {
+    opacity: 1;
+}
+
+.pull-footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
 }
