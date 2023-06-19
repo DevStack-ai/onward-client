@@ -30,7 +30,7 @@ function Login() {
                                     await toast.promise(
                                         auth.login(values.email, values.password),
                                         {
-                                            pending: 'Ingresando',
+                                            loading: 'Ingresando',
                                             success: 'Bienvenido',
                                             error: 'Credenciales incorrectas'
                                         }

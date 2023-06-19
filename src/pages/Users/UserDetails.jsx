@@ -36,7 +36,7 @@ function UsersDetails() {
             await toast.promise(
                 deleteUser(document.uid),
                 {
-                    pending: 'Eliminando',
+                    loading: 'Eliminando',
                     success: 'Usuario eliminado',
                     error: 'Ocurrio un error'
                 }
@@ -67,12 +67,11 @@ function UsersDetails() {
                                                 () => createUser(values)
                                                 : () => updateUser(document.uid, values)
 
-                                            console.log("values", values)
 
                                             await toast.promise(
                                                 action(),
                                                 {
-                                                    pending: `${document.uid ? "Editando" : "Creando"}`,
+                                                    loading: `${document.uid ? "Editando" : "Creando"}`,
                                                     success: `${document.uid ? "Editado" : "Creado"} exitosamente`,
                                                     error: 'Ocurrio un error'
                                                 }

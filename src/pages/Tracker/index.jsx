@@ -132,7 +132,7 @@ function Tracker() {
                                         </tr>)}
                                     {data.map((row, idx) => (
                                         <tr className='cursor-pointer' key={idx}>
-                                            <th>{row.ContainerNumber}</th>
+                                            <th>{row.ContainerNumber || row.container}</th>
                                             <th>{row.LoadingDate?.Date}</th>
                                             <th>{row.DepartureDate?.Date}</th>
                                             <th>{row.DischargeDate?.Date}</th>

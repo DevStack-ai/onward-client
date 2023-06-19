@@ -36,7 +36,7 @@ function ContainerEdit() {
             await toast.promise(
                 deleteContainer(document.uid),
                 {
-                    pending: 'Eliminando',
+                    loading: 'Eliminando',
                     success: 'Contenedor eliminado',
                     error: 'Ocurrio un error'
                 }
@@ -62,7 +62,6 @@ function ContainerEdit() {
                                     validationSchema={document.uid ? EditSchema : CreateSchema}
                                     onSubmit={async values => {
                                         try {
-                                            console.log("values", values)
 
                                             const action = !document.uid ?
                                                 () => createContainer(values)
@@ -72,7 +71,7 @@ function ContainerEdit() {
                                             await toast.promise(
                                                 action(),
                                                 {
-                                                    pending: `${document.uid ? "Actualizando" : "Creando"}`,
+                                                    loading: `${document.uid ? "Actualizando" : "Creando"}`,
                                                     success: `${document.uid ? "Actualizado" : "Creado"} exitosamente`,
                                                     error: 'Ocurrio un error'
                                                 }
@@ -335,13 +334,13 @@ function ContainerEdit() {
                                                 <div className='mt-5'>
                                                     <div className='d-flex justify-content-between flex-row-reverse'>
                                                         <div className='gap-2'>
-                                                            <button className='btn btn-onward btn-secondary mx-2' onClick={() => navigate("/containers")} >Cancelar</button>
+                                                            <button type="button" className='btn btn-onward btn-secondary mx-2' onClick={() => navigate("/containers")} >Cancelar</button>
                                                             <button type="submit" className='btn btn-onward btn-success' disabled={isSubmitting}   >
                                                                 {isSubmitting && <Loading />}
                                                                 {!isSubmitting && document.uid ? "Editar" : "Crear"}
                                                             </button>
                                                         </div>
-                                                        {document.uid && <button className='btn btn-onward btn-danger' onClick={deleteDocument} >Eliminar</button>}
+                                                        {document.uid && <button type="button" className='btn btn-onward btn-danger' onClick={deleteDocument} >Eliminar</button>}
                                                     </div>
                                                 </div>
                                             </div>

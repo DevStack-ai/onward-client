@@ -34,7 +34,6 @@ const AuthProvider = ({ children }) => {
         try {
 
             const unsubscribe = onAuthStateChanged(auth, async (currentuser) => {
-                console.log("Auth", currentuser);
                 if (currentuser) {
                     const uid = currentuser.uid
                     const { data: document } = await getUser(uid)
@@ -74,7 +73,6 @@ const AuthInit = ({ children }) => {
             try {
                 if (!didRequest.current) {
                     const { data: document } = await getUser(session.uid)
-                    console.log(document)
                     authHelpers.setAuth(document)
                     setCurrentUser(document);
                 }

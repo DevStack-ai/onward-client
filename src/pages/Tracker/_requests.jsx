@@ -9,7 +9,7 @@ async function getAllContainers() {
     return axios.post(`${env.VITE_FIREBASE_API}/containers/all`)
 }
 async function createContainer(options) {
-    return axios.post(`${env.VITE_FIREBASE_API}/containers`, options)
+    return axios.post(`${env.VITE_FIREBASE_API}/containers/create`, options)
 }
 async function getContainer(uid) {
     return axios.get(`${env.VITE_FIREBASE_API}/containers/${uid}`)

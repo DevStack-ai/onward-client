@@ -47,7 +47,6 @@ const LayoutProvider = ({ children }) => {
         disableSplashScreen()
     }, [])
     const { currentUser } = useAuth()
-    console.log(currentUser)
     if (currentUser) {
         return <>
             <LayoutContext.Provider value={value}>
