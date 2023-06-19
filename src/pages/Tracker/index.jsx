@@ -2,11 +2,10 @@ import React, { useCallback, useEffect, useState } from 'react'
 import Dropzone from '@components/dropzone'
 import { readFile } from "@helpers/readFile"
 import TagsInput from '../../components/form/TagsInputs'
-import Loading from "@components/loading/dark"
+import Loading from "@components/loading"
 import { useAuth } from "../../providers"
 import { getContainers, getAllContainers, getReport } from "./_requests"
 import { useNavigate } from 'react-router-dom'
-import moment from "moment"
 function Tracker() {
     const navigate = useNavigate()
     const { currentUser } = useAuth()

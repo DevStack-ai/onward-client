@@ -1,0 +1,16 @@
+{
+  "projects": {
+    "default": "bpo-dist"
+  },
+  "targets": {
+
+    "bpo-dist": {
+      "hosting": {
+        "onward": [
+          "onward"
+        ]
+      }
+    }
+  }
+}
+

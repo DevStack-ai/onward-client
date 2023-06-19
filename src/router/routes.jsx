@@ -28,7 +28,7 @@ const AppRoutes = () => {
 
 
     const { currentUser } = useAuth()
-
+    console.log("currentUser", currentUser)
     return (
         <BrowserRouter basename={PUBLIC_URL}>
             <Routes>

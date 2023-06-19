@@ -27,6 +27,9 @@ const Sidebar = () => {
         setActiveIndex(curPath.length === 0 ? 0 : activeItem);
     }, [location]);
 
+    if (!currentUser) {
+        return null;
+    } 
     return <div className='sidebar'>
         <div className="sidebar__logo pt-5">
             <img src={logo} width="80%" />

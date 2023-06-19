@@ -5,6 +5,7 @@ import { CreateSchema, EditSchema, defaultValues } from './_helpers'
 import { Formik, Form } from 'formik';
 import { FormikField } from '../../components/form/FormikField';
 import { getContainer, updateContainer, deleteContainer, createContainer } from './_requests'
+import toast from 'react-hot-toast';
 
 function ContainerEdit() {
 
@@ -31,7 +32,15 @@ function ContainerEdit() {
 
     async function deleteDocument() {
         try {
-            await deleteContainer(document.uid)
+
+            await toast.promise(
+                deleteContainer(document.uid),
+                {
+                    pending: 'Eliminando',
+                    success: 'Contenedor eliminado',
+                    error: 'Ocurrio un error'
+                }
+            )
             navigate("/containers")
         } catch (err) {
             console.log(err)
@@ -54,11 +63,21 @@ function ContainerEdit() {
                                     onSubmit={async values => {
                                         try {
                                             console.log("values", values)
-                                            if (document.uid) {
-                                                await updateContainer(document.uid, values)
-                                            } else {
-                                                await createContainer(values)
-                                            }
+
+                                            const action = !document.uid ?
+                                                () => createContainer(values)
+                                                : () => updateContainer(document.uid, values)
+
+
+                                            await toast.promise(
+                                                action(),
+                                                {
+                                                    pending: `${document.uid ? "Actualizando" : "Creando"}`,
+                                                    success: `${document.uid ? "Actualizado" : "Creado"} exitosamente`,
+                                                    error: 'Ocurrio un error'
+                                                }
+                                            )
+
                                             navigate("/containers")
                                         } catch (err) {
                                             console.log(err)

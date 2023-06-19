@@ -6,10 +6,12 @@ import { Formik, Form } from 'formik';
 import React from 'react'
 
 import logo from "@assets/images/logo.png"
+import toast from 'react-hot-toast';
 
 function Login() {
 
     const auth = useAuth()
+
 
     return (<>
         <div className='d-flex justify-content-center'>
@@ -25,8 +27,16 @@ function Login() {
                             validationSchema={Schema}
                             onSubmit={async values => {
                                 try {
-                                    await auth.login(values.email, values.password)
+                                    await toast.promise(
+                                        auth.login(values.email, values.password),
+                                        {
+                                            pending: 'Ingresando',
+                                            success: 'Bienvenido',
+                                            error: 'Credenciales incorrectas'
+                                        }
+                                    )
                                 } catch (err) {
+
                                     console.log(err)
                                 }
                             }}

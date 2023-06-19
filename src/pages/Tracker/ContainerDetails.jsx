@@ -11,7 +11,7 @@ function ContainerDetails() {
     const params = useParams()
     const { currentUser } = useAuth()
     const [isLoading, setIsLoading] = useState(true)
-    const [document, setDocument] = useState({})
+    const [container, setDocument] = useState({})
     const [downloadReport, setDownloadReport] = useState(false)
 
     const uid = params.id
@@ -47,7 +47,7 @@ function ContainerDetails() {
 
     return (
         <div className='container '>
-            <h2 className='text-white'> Contenedor {document.ContainerNumber}</h2>
+            <h2 className='text-white'> Contenedor {container.ContainerNumber}</h2>
             <div className='card '>
 
                 <div className={`card-body `}>
@@ -80,13 +80,13 @@ function ContainerDetails() {
                                             Contenedor
                                         </label>
                                         <div className="text-muted pt-3 fw-bold col-sm-12 col-lg-10">
-                                            {document.container || "-"}
+                                            {container.container || "-"}
                                         </div>
                                         <label className={`fw-bold col-sm-12 col-lg-2 col-form-label fw-bold fs-6 mt-4`}>
                                             REF
                                         </label>
                                         <div className="text-muted pt-3 fw-bold col-sm-12 col-lg-4 mt-4">
-                                            {document.reference || "-"}
+                                            {container.reference || "-"}
 
 
                                         </div>
@@ -94,35 +94,35 @@ function ContainerDetails() {
                                             REF2
                                         </label>
                                         <div className="text-muted pt-3 fw-bold col-sm-12 col-lg-4 mt-4">
-                                            {document.reference_alt || "-"}
+                                            {container.reference_alt || "-"}
 
                                         </div>
                                         <label className={`fw-bold col-sm-12 col-lg-2 col-form-label fw-bold fs-6 mt-4`}>
                                             SOURCE
                                         </label>
                                         <div className="text-muted pt-3 fw-bold col-sm-12 col-lg-4 mt-4">
-                                            {document.source || "-"}
+                                            {container.source || "-"}
 
                                         </div>
                                         <label className={`fw-bold col-sm-12 col-lg-2 col-form-label fw-bold fs-6 mt-4`}>
                                             COMPANY
                                         </label>
                                         <div className="text-muted pt-3 fw-bold col-sm-12 col-lg-4 mt-4">
-                                            {document.company || "-"}
+                                            {container.company || "-"}
 
                                         </div>
                                         <label className={`fw-bold col-sm-12 col-lg-2 col-form-label fw-bold fs-6 mt-4`}>
                                             Cliente
                                         </label>
                                         <div className="text-muted pt-3 fw-bold col-sm-12 col-lg-4 mt-4">
-                                            {document.customer || "-"}
+                                            {container.customer || "-"}
 
                                         </div>
                                         <label className={`fw-bold col-sm-12 col-lg-2 col-form-label fw-bold fs-6 mt-4`}>
                                             Status BPO
                                         </label>
                                         <div className="text-muted pt-3 fw-bold col-sm-12 col-lg-4 mt-4">
-                                            {document.status || "-"}
+                                            {container.status || "-"}
 
                                         </div>
 
@@ -130,77 +130,77 @@ function ContainerDetails() {
                                             Fecha de cierre
                                         </label>
                                         <div className="text-muted pt-3 fw-bold col-sm-12 col-lg-4 mt-4">
-                                            {document.close_date || "-"}
+                                            {container.close_date || "-"}
 
                                         </div>
                                         <label className={`fw-bold col-sm-12 col-lg-2 col-form-label fw-bold fs-6 mt-4`}>
                                             Salida de bodega
                                         </label>
                                         <div className="text-muted pt-3 fw-bold col-sm-12 col-lg-4 mt-4">
-                                            {document.checkout_date || "-"}
+                                            {container.checkout_date || "-"}
 
                                         </div>
                                         <label className={`fw-bold col-sm-12 col-lg-2 col-form-label fw-bold fs-6 mt-4`}>
                                             Zarpe
                                         </label>
                                         <div className="text-muted pt-3 fw-bold col-sm-12 col-lg-4 mt-4">
-                                            {document.departure_data || "-"}
+                                            {container.departure_data || "-"}
 
                                         </div>
                                         <label className={`fw-bold col-sm-12 col-lg-2 col-form-label fw-bold fs-6 mt-4`}>
                                             Arribo
                                         </label>
                                         <div className="text-muted pt-3 fw-bold col-sm-12 col-lg-4 mt-4">
-                                            {document.arrival_date || "-"}
+                                            {container.arrival_date || "-"}
 
                                         </div>
                                         <label className={`fw-bold col-sm-12 col-lg-2 col-form-label fw-bold fs-6 mt-4`}>
                                             Entry Number
                                         </label>
                                         <div className="text-muted pt-3 fw-bold col-sm-12 col-lg-4 mt-4">
-                                            {document.entry_number || "-"}
+                                            {container.entry_number || "-"}
 
                                         </div>
                                         <label className={`fw-bold col-sm-12 col-lg-2 col-form-label fw-bold fs-6 mt-4`}>
                                             FDA
                                         </label>
                                         <div className="text-muted pt-3 fw-bold col-sm-12 col-lg-4 mt-4">
-                                            {document.fda || "-"}
+                                            {container.fda || "-"}
 
                                         </div>
                                         <label className={`fw-bold col-sm-12 col-lg-2 col-form-label fw-bold fs-6 mt-4`}>
                                             CBP
                                         </label>
                                         <div className="text-muted pt-3 fw-bold col-sm-12 col-lg-4 mt-4">
-                                            {document.cbp || "-"}
+                                            {container.cbp || "-"}
 
                                         </div>
                                         <label className={`fw-bold col-sm-12 col-lg-2 col-form-label fw-bold fs-6 mt-4`}>
                                             USDA
                                         </label>
                                         <div className="text-muted pt-3 fw-bold col-sm-12 col-lg-4 mt-4">
-                                            {document.usda || "-"}
+                                            {container.usda || "-"}
 
                                         </div>
                                         <label className={`fw-bold col-sm-12 col-lg-2 col-form-label fw-bold fs-6 mt-4`}>
                                             LFD
                                         </label>
                                         <div className="text-muted pt-3 fw-bold col-sm-12 col-lg-4 mt-4">
-                                            {document.lfd || "-"}
+                                            {container.lfd || "-"}
 
                                         </div>
                                         <label className={`fw-bold col-sm-12 col-lg-2 col-form-label fw-bold fs-6 mt-4`}>
                                             LFD Fee
                                         </label>
                                         <div className="text-muted pt-3 fw-bold col-sm-12 col-lg-4 mt-4">
-                                            {document.lfd_fee || "-"}
+                                            {container.lfd_fee || "-"}
 
                                         </div>
                                         <label className={`fw-bold col-sm-12 col-lg-2 col-form-label fw-bold fs-6 mt-4`}>
                                             Estimada de Entrega
                                         </label>
                                         <div className="text-muted pt-3 fw-bold col-sm-12 col-lg-4 mt-4">
-                                            {document.estimated_date || "-"}
+                                            {container.estimated_date || "-"}
 
                                         </div>
                                         <label className={`fw-bold col-sm-12 col-lg-2 col-form-label fw-bold fs-6 mt-4`}>
@@ -208,7 +208,7 @@ function ContainerDetails() {
 
                                         </label>
                                         <div className="text-muted pt-3 fw-bold col-sm-12 col-lg-4 mt-4">
-                                            {document.delivery_date || "-"}
+                                            {container.delivery_date || "-"}
 
                                         </div>
                                         <label className={`fw-bold col-sm-12 col-lg-2 col-form-label fw-bold fs-6 mt-4`}>
@@ -216,7 +216,7 @@ function ContainerDetails() {
 
                                         </label>
                                         <div className="text-muted pt-3 fw-bold col-sm-12 col-lg-10 mt-4">
-                                            {document.obs || "-"}
+                                            {container.obs || "-"}
 
                                         </div>
                                     </div>

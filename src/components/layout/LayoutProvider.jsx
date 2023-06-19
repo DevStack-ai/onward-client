@@ -66,7 +66,6 @@ const LayoutProvider = ({ children }) => {
         <LayoutContext.Provider value={value}>
             <div className="app-container">
                 {children}
-
             </div>
         </LayoutContext.Provider>
     )

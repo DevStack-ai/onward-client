@@ -1,11 +1,14 @@
 import React from 'react'
+import { useAuth } from '../../../providers'
 // import Nav from 'react-bootstrap/Nav';
 // import Navbar from 'react-bootstrap/Navbar';
 // import NavDropdown from 'react-bootstrap/NavDropdown';
 const Header = () => {
 
-
-
+    const { currentUser } = useAuth()
+    if (!currentUser) {
+        return null;
+    } 
     return (
         <header>
 

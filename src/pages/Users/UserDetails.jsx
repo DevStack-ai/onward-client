@@ -6,6 +6,7 @@ import { CreateSchema, EditSchema, defaultValues, roles } from './_helpers'
 import { Formik, Form } from 'formik';
 import { FormikField } from '../../components/form/FormikField';
 import { createUser, updateUser, deleteUser } from './_requests'
+import toast from 'react-hot-toast';
 
 function UsersDetails() {
 
@@ -32,7 +33,15 @@ function UsersDetails() {
 
     async function deleteDocument() {
         try {
-            await deleteUser(document.uid)
+            await toast.promise(
+                deleteUser(document.uid),
+                {
+                    pending: 'Eliminando',
+                    success: 'Usuario eliminado',
+                    error: 'Ocurrio un error'
+                }
+            )
+
             navigate("/users")
         } catch (err) {
             console.log(err)
@@ -54,19 +63,28 @@ function UsersDetails() {
                                     validationSchema={document.uid ? EditSchema : CreateSchema}
                                     onSubmit={async values => {
                                         try {
+                                            const action = !document.uid ?
+                                                () => createUser(values)
+                                                : () => updateUser(document.uid, values)
+
                                             console.log("values", values)
-                                            if (document.uid) {
-                                                await updateUser(document.uid, values)
-                                            } else {
-                                                await createUser(values)
-                                            }
+
+                                            await toast.promise(
+                                                action(),
+                                                {
+                                                    pending: `${document.uid ? "Editando" : "Creando"}`,
+                                                    success: `${document.uid ? "Editado" : "Creado"} exitosamente`,
+                                                    error: 'Ocurrio un error'
+                                                }
+                                            )
+
                                             navigate("/users")
                                         } catch (err) {
                                             console.log(err)
                                         }
                                     }}
                                 >
-                                    {({ errors, touched, values, isSubmitting, handleChange }) => (
+                                    {({ errors, touched, values, isSubmitting, handleChange, handleSubmit }) => (
                                         <Form className="form mb-8">
                                             <div className=' d-flex flex-column justify-content-between '>
                                                 <div className="row mb-6 px-0 ms-0 ">
@@ -121,13 +139,13 @@ function UsersDetails() {
                                                 <div className='mt-5'>
                                                     <div className='d-flex justify-content-between flex-row-reverse'>
                                                         <div className='gap-2'>
-                                                            <button className='btn btn-onward btn-secondary mx-2' onClick={() => navigate("/users")} >Cancelar</button>
-                                                            <button type="submit" className='btn btn-onward btn-success' disabled={isSubmitting}   >
+                                                            <button type="button" className='btn btn-onward btn-secondary mx-2' onClick={() => navigate("/users")} >Cancelar</button>
+                                                            <button type="submit" className='btn btn-onward btn-success' disabled={isSubmitting} onClick={handleSubmit}  >
                                                                 {isSubmitting && <Loading />}
                                                                 {!isSubmitting && document.uid ? "Editar" : "Crear"}
                                                             </button>
                                                         </div>
-                                                        {document.uid && <button className='btn btn-onward btn-danger' onClick={deleteDocument} >Eliminar</button>}
+                                                        {document.uid && <button type="button" className='btn btn-onward btn-danger' onClick={deleteDocument} >Eliminar</button>}
                                                     </div>
                                                 </div>
                                             </div>
