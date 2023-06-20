@@ -11,7 +11,7 @@ function Users() {
     const [isLoading, setIsLoading] = useState(true)
     const [documents, setDocuments] = useState([])
     const [page, setPage] = useState(1)
-    const [itemsPerPage,] = useState(5)
+    const [itemsPerPage,] = useState(10)
     const [total, setTotal] = useState(0)
 
 

@@ -4,8 +4,10 @@ import { readFile } from "@helpers/readFile"
 import TagsInput from '../../components/form/TagsInputs'
 import Loading from "@components/loading"
 import { useAuth } from "../../providers"
-import { getContainers, getAllContainers, getReport } from "./_requests"
+import { getContainers, getTableContainers, getReport } from "./_requests"
 import { useNavigate } from 'react-router-dom'
+import Pagination from "@components/table/pagination"
+
 function Tracker() {
     const navigate = useNavigate()
     const { currentUser } = useAuth()
@@ -15,6 +17,12 @@ function Tracker() {
     const [isLoading, setIsLoading] = useState(false)
     const [downloadReport, setDownloadReport] = useState(false)
     const [dropzone, useDropzone] = useState(false)
+    const [page, setPage] = useState(1)
+    const [itemsPerPage,] = useState(10)
+    const [total, setTotal] = useState(0)
+
+
+
     const toggleDropzone = () => useDropzone(!dropzone)
 
 
@@ -36,7 +44,6 @@ function Tracker() {
         setIsLoading(false)
     }
 
-
     async function generateFile() {
         setDownloadReport(true)
         const uids = data.map(d => d.uid)
@@ -54,14 +61,13 @@ function Tracker() {
 
     }
     const fetchAllData = useCallback(async () => {
-        if (currentUser.role === "admin") {
-            setIsLoading(true)
-            const query = await getAllContainers()
-            const data = query.data.documents
-            setData(data)
-            setIsLoading(false)
-        }
-    }, [currentUser])
+        setIsLoading(true)
+        const query = await getTableContainers({ page, itemsPerPage })
+        const response = query.data
+        setData(response.documents)
+        setTotal(response.total)
+        setIsLoading(false)
+    }, [page, itemsPerPage])
 
     useEffect(() => {
         fetchAllData()
@@ -90,7 +96,7 @@ function Tracker() {
                         <button
                             type="button"
                             className="btn btn-icon btn-primary ms-3"
-                            onClick={fetchData}
+                            onClick={containers.length ?  fetchData : fetchAllData}
                         >
                             <span className="svg-icon svg-icon px-4">
                                 <i class='bx bx-search-alt-2' ></i>
@@ -149,7 +155,15 @@ function Tracker() {
                                     ))}
                                 </tbody>
                             </table>
+                            <div className='d-flex justify-content-end'>
 
+                                <Pagination
+                                    className="pagination-bar"
+                                    currentPage={page}
+                                    totalCount={total}
+                                    pageSize={itemsPerPage}
+                                    onPageChange={page => setPage(page)} />
+                            </div>
                         </div>
 
                     </div>

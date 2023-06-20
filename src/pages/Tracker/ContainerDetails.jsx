@@ -47,7 +47,7 @@ function ContainerDetails() {
 
     return (
         <div className='container '>
-            <h2 className='text-white'> Contenedor {container.ContainerNumber}</h2>
+            <h2 className='text-white'> Contenedor {container.ContainerNumber || container.container}</h2>
             <div className='card '>
 
                 <div className={`card-body `}>
@@ -220,7 +220,138 @@ function ContainerDetails() {
 
                                         </div>
                                     </div>
+                                    {container.ContainerNumber && <>
+                                        <div className='separator'></div>
+                                        <div className="row mb-6 px-0 ms-0 ">
+                                            <label className={`fw-bold col-sm-12 col-lg-2 col-form-label fw-bold fs-6 mt-4`}>
+                                                ContainerNumber
+                                            </label>
+                                            <div className="text-muted pt-3 fw-bold col-sm-12 col-lg-4 mt-4">
+                                                {container.ContainerNumber || "-"}
+                                            </div>
+                                            <label className={`fw-bold col-sm-12 col-lg-2 col-form-label fw-bold fs-6 mt-4`}>
+                                                Message
+                                            </label>
+                                            <div className="text-muted pt-3 fw-bold col-sm-12 col-lg-4 mt-4">
+                                                {container.Message || "-"}
+                                            </div>
+                                            <label className={`fw-bold col-sm-12 col-lg-2 col-form-label fw-bold fs-6 mt-4`}>
+                                                Status
+                                            </label>
+                                            <div className="text-muted pt-3 fw-bold col-sm-12 col-lg-4 mt-4">
+                                                {container.Status || "-"}
+                                            </div>
+                                            <label className={`fw-bold col-sm-12 col-lg-2 col-form-label fw-bold fs-6 mt-4`}>
+                                                StatusId
+                                            </label>
+                                            <div className="text-muted pt-3 fw-bold col-sm-12 col-lg-4 mt-4">
+                                                {container.StatusId || "-"}
 
+                                            </div>
+                                            <label className={`fw-bold col-sm-12 col-lg-2 col-form-label fw-bold fs-6 mt-4`}>
+                                                ReferenceNo
+                                            </label>
+                                            <div className="text-muted pt-3 fw-bold col-sm-12 col-lg-4 mt-4">
+                                                {container.ReferenceNo || "-"}
+
+                                            </div>
+                                            <label className={`fw-bold col-sm-12 col-lg-2 col-form-label fw-bold fs-6 mt-4`}>
+                                                BLReferenceNo
+                                            </label>
+                                            <div className="text-muted pt-3 fw-bold col-sm-12 col-lg-4 mt-4">
+                                                {container.BLReferenceNo || "-"}
+
+                                            </div>
+                                            <label className={`fw-bold col-sm-12 col-lg-2 col-form-label fw-bold fs-6 mt-4`}>
+                                                Cliente
+                                            </label>
+                                            <div className="text-muted pt-3 fw-bold col-sm-12 col-lg-4 mt-4">
+                                                {container.customer || "-"}
+
+                                            </div>
+                                            <label className={`fw-bold col-sm-12 col-lg-2 col-form-label fw-bold fs-6 mt-4`}>
+                                                ShippingLine
+                                            </label>
+                                            <div className="text-muted pt-3 fw-bold col-sm-12 col-lg-4 mt-4">
+                                                {container.ShippingLine || "-"}
+
+                                            </div>
+
+                                            <label className={`fw-bold col-sm-12 col-lg-2 col-form-label fw-bold fs-6 mt-4`}>
+                                                FromCountry
+                                            </label>
+                                            <div className="text-muted pt-3 fw-bold col-sm-12 col-lg-4 mt-4">
+                                                {container.FromCountry || "-"}
+
+                                            </div>
+                                            <label className={`fw-bold col-sm-12 col-lg-2 col-form-label fw-bold fs-6 mt-4`}>
+                                                Pol
+                                            </label>
+                                            <div className="text-muted pt-3 fw-bold col-sm-12 col-lg-4 mt-4">
+                                                {container.Pol || "-"}
+
+                                            </div>
+                                            <label className={`fw-bold col-sm-12 col-lg-2 col-form-label fw-bold fs-6 mt-4`}>
+                                                ToCountry
+                                            </label>
+                                            <div className="text-muted pt-3 fw-bold col-sm-12 col-lg-4 mt-4">
+                                                {container.ToCountry || "-"}
+
+                                            </div>
+                                            <label className={`fw-bold col-sm-12 col-lg-2 col-form-label fw-bold fs-6 mt-4`}>
+                                                Pod
+                                            </label>
+                                            <div className="text-muted pt-3 fw-bold col-sm-12 col-lg-4 mt-4">
+                                                {container.Pod || "-"}
+
+                                            </div>
+                                            <label className={`fw-bold col-sm-12 col-lg-2 col-form-label fw-bold fs-6 mt-4`}>
+                                                Vessel
+                                            </label>
+                                            <div className="text-muted pt-3 fw-bold col-sm-12 col-lg-4 mt-4">
+                                                {container.Vessel || "-"}
+
+                                            </div>
+                                            <label className={`fw-bold col-sm-12 col-lg-2 col-form-label fw-bold fs-6 mt-4`}>
+                                                VesselIMO
+                                            </label>
+                                            <div className="text-muted pt-3 fw-bold col-sm-12 col-lg-4 mt-4">
+                                                {container.VesselIMO || "-"}
+
+                                            </div>
+                                            <label className={`fw-bold col-sm-12 col-lg-2 col-form-label fw-bold fs-6 mt-4`}>
+                                                GateOutDate
+                                            </label>
+                                            <div className="text-muted pt-3 fw-bold col-sm-12 col-lg-4 mt-4">
+                                                {container.GateOutDate || "-"}
+
+                                            </div>
+                                            <label className={`fw-bold col-sm-12 col-lg-2 col-form-label fw-bold fs-6 mt-4`}>
+                                                FormatedTransitTime
+                                            </label>
+                                            <div className="text-muted pt-3 fw-bold col-sm-12 col-lg-4 mt-4">
+                                                {container.FormatedTransitTime || "-"}
+
+                                            </div>
+                                            <label className={`fw-bold col-sm-12 col-lg-2 col-form-label fw-bold fs-6 mt-4`}>
+                                                FirstETA
+                                            </label>
+                                            <div className="text-muted pt-3 fw-bold col-sm-12 col-lg-4 mt-4">
+                                                {container.FirstETA || "-"}
+
+                                            </div>
+                                            <label className={`fw-bold col-sm-12 col-lg-2 col-form-label fw-bold fs-6 mt-4`}>
+                                                LiveMapUrl
+                                            </label>
+                                            <div className="text-muted pt-3 fw-bold col-sm-12 col-lg-4 mt-4">
+                                                {container.LiveMapUrl ? <a href={container.LiveMapUrl} target='_blank'>Map</a> : "-"}
+
+                                            </div>
+
+                                        </div>
+                                    </>
+
+                                    }
                                 </div>
 
 

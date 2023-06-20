@@ -5,8 +5,8 @@ const env = import.meta.env
 async function getContainers(options) {
     return axios.post(`${env.VITE_FIREBASE_API}/containers`, options)
 }
-async function getAllContainers() {
-    return axios.post(`${env.VITE_FIREBASE_API}/containers/all`)
+async function getTableContainers() {
+    return axios.post(`${env.VITE_FIREBASE_API}/containers/table`)
 }
 async function createContainer(options) {
     return axios.post(`${env.VITE_FIREBASE_API}/containers/create`, options)
@@ -27,4 +27,4 @@ async function getReport(options) {
 }
 
 
-export { getContainers, getReport, getContainer, updateContainer, deleteContainer, createContainer, getAllContainers }
+export { getContainers, getReport, getContainer, updateContainer, deleteContainer, createContainer, getTableContainers }
