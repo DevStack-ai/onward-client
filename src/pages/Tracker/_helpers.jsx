@@ -1,10 +1,10 @@
 import * as Yup from 'yup';
 
 export const EditSchema = Yup.object().shape({
-    container: Yup.string().required('Campo Obligatorio'),
+    reference: Yup.string().required('Campo Obligatorio'),
 });
 export const CreateSchema = Yup.object().shape({
-    container: Yup.string().required('Campo Obligatorio'),
+    reference: Yup.string().required('Campo Obligatorio'),
  
 });
 export const defaultValues = {

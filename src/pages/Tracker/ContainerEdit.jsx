@@ -60,8 +60,15 @@ function ContainerEdit() {
                                 <Formik
                                     initialValues={document.uid ? document : defaultValues}
                                     validationSchema={document.uid ? EditSchema : CreateSchema}
-                                    onSubmit={async values => {
+                                    onSubmit={async (values, { resetForm, setTouched }) => {
                                         try {
+                                            const hasData = Object.values(values).filter(Boolean).length
+                                            if (!hasData) {
+                                                setTouched({})
+                                                resetForm()
+                                                toast.error("Minimo llenar un campo")
+                                                return;
+                                            }
 
                                             const action = !document.uid ?
                                                 () => createContainer(values)
@@ -87,7 +94,7 @@ function ContainerEdit() {
                                         <Form className="form mb-8">
                                             <div className=' d-flex flex-column justify-content-between '>
                                                 <div className="row mb-6 px-0 ms-0 ">
-                                                    <label className={`col-sm-12 col-lg-2 col-form-label required fw-bold fs-6`}>
+                                                    <label className={`col-sm-12 col-lg-2 col-form-label fw-bold fs-6`}>
                                                         Contenedor
                                                     </label>
                                                     <div className="col-sm-12 col-lg-10">
@@ -99,7 +106,7 @@ function ContainerEdit() {
                                                             touched={touched}
                                                         />
                                                     </div>
-                                                    <label className={`col-sm-12 col-lg-2 col-form-label fw-bold fs-6 mt-4`}>
+                                                    <label className={`col-sm-12 col-lg-2 col-form-label required fw-bold fs-6 mt-4`}>
                                                         REF
                                                     </label>
                                                     <div className="col-sm-12 col-lg-4 mt-4">

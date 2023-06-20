@@ -119,7 +119,7 @@ function Tracker() {
                             <table className='table table-row-bordered fs-6 gy-5 table-hover'>
                                 <thead>
                                     <tr className="text-start text-gray-400 fw-bolder fs-6 text-uppercase gs-0">
-                                        <th scope="col" className='mobile-th bg-white'>Contenedor</th>
+                                        <th scope="col" className='mobile-th bg-white'>REF</th>
                                         <th scope="col" className='mobile-th bg-white'>Fecha de cierre</th>
                                         <th scope="col" className='mobile-th bg-white'>Salida de bodega</th>
                                         <th scope="col" className='mobile-th bg-white'>Zarpe</th>
@@ -138,7 +138,7 @@ function Tracker() {
                                         </tr>)}
                                     {data.map((row, idx) => (
                                         <tr className='cursor-pointer' key={idx}>
-                                            <th>{row.ContainerNumber || row.container}</th>
+                                            <th>{row.reference}</th>
                                             <th>{row.LoadingDate?.Date}</th>
                                             <th>{row.DepartureDate?.Date}</th>
                                             <th>{row.DischargeDate?.Date}</th>
