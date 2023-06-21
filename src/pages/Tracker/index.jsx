@@ -49,7 +49,6 @@ function Tracker() {
     }
     const fetchAllData = useCallback(async () => {
         if (!dropzone) {
-
             setIsLoading(true)
             const query = await getTableContainers({ page, itemsPerPage })
             const response = query.data
@@ -89,13 +88,13 @@ function Tracker() {
                             onClick={containers.length ? fetchData : fetchAllData}
                         >
                             <span className="svg-icon svg-icon px-4">
-                                <i class='bx bx-search-alt-2' ></i>
+                                <i className='bx bx-search-alt-2' ></i>
                             </span>
                         </button>
                     </div>
                     <div className="card-toolbar ">
                         {!!data.length && <button className='btn btn-onward btn-secondary mx-2' onClick={generateFile} >
-                            {downloadReport ? <>Descargando...</> : <><i class='bx bxs-file-export'></i> Descargar</>}
+                            {downloadReport ? <>Descargando...</> : <><i className='bx bxs-file-export'></i> Descargar</>}
 
                         </button>}
 

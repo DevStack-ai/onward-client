@@ -60,13 +60,13 @@ function ContainerDetails() {
                                     <div className='mb-5'>
                                         <div className='d-flex justify-content-between flex-row-reverse'>
                                             <div className='gap-2'>
-                                                <button className='btn btn-icon btn-secondary mx-2' onClick={() => navigate("/containers")} ><i class='bx bx-left-arrow-alt'></i></button>
+                                                <button className='btn btn-icon btn-secondary mx-2' onClick={() => navigate("/containers")} ><i className='bx bx-left-arrow-alt'></i></button>
                                                 <button className='btn btn-icon btn-success mx-2' onClick={generateFile} >
-                                                    {downloadReport ? <Loading /> : <i class='bx bxs-file-export'></i>}
+                                                    {downloadReport ? <Loading /> : <i className='bx bxs-file-export'></i>}
                                                 </button>
                                                 {currentUser.role === "admin" &&
                                                     <span className='btn btn-onward btn-primary mx-2' onClick={() => navigate(`/containers/edit/${uid}`)} >
-                                                        <i class='bx bxs-edit' ></i>
+                                                        <i className='bx bxs-edit' ></i>
                                                         Editar
                                                     </span>}
 

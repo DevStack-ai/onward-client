@@ -18,4 +18,10 @@ export const sidebarNavItems = [
         to: '/containers',
         section: 'containers'
     },
+    {
+        display: 'Calendario',
+        icon: <i className='bx bx-calendar'></i>,
+        to: '/calendar',
+        section: 'calendar'
+    },
 ];

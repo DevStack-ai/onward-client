@@ -8,6 +8,9 @@ async function getContainers(options) {
 async function getTableContainers(options) {
     return axios.post(`${env.VITE_FIREBASE_API}/containers/table`, options)
 }
+async function getAllContainers() {
+    return axios.post(`${env.VITE_FIREBASE_API}/containers/all`)
+}
 async function createContainer(options) {
     return axios.post(`${env.VITE_FIREBASE_API}/containers/create`, options)
 }
@@ -27,4 +30,4 @@ async function getReport(options) {
 }
 
 
-export { getContainers, getReport, getContainer, updateContainer, deleteContainer, createContainer, getTableContainers }
+export { getContainers, getReport, getContainer, updateContainer, deleteContainer, createContainer, getTableContainers, getAllContainers }

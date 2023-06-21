@@ -62,7 +62,7 @@ const Sidebar = () => {
         </div>
         <div className={`sidebar__menu__item cursor-pointer`} onClick={logout}>
             <div className="sidebar__menu__item__icon">
-                <i class='bx bx-log-out' ></i>
+                <i className='bx bx-log-out' ></i>
             </div>
             <div className="sidebar__menu__item__text">
                 Salir

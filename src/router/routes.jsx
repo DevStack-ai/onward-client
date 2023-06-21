@@ -15,6 +15,7 @@ import { InitProvider } from "../providers/layout"
 import Tracker from "../pages/Tracker"
 import ContainerEdit from "../pages/Tracker/ContainerEdit"
 import ContainerDetails from "../pages/Tracker/ContainerDetails"
+import Calendar from "../pages/Calendar"
 
 import Login from "../pages/Auth/login";
 import Dashboard from '../pages/Dashboard'
@@ -41,6 +42,9 @@ const AppRoutes = () => {
                         <Route path="/containers" element={<Tracker />} />
                         <Route path="/containers/edit/:id" element={<ContainerEdit />} />
                         <Route path="/containers/details/:id" element={<ContainerDetails />} />
+
+                        <Route path="/calendar" element={<Calendar />} />
+
 
                         <Route path="*" element={<Navigate to="/" />} />
                     </>}
