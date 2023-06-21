@@ -5,8 +5,8 @@ const env = import.meta.env
 async function getContainers(options) {
     return axios.post(`${env.VITE_FIREBASE_API}/containers`, options)
 }
-async function getTableContainers() {
-    return axios.post(`${env.VITE_FIREBASE_API}/containers/table`)
+async function getTableContainers(options) {
+    return axios.post(`${env.VITE_FIREBASE_API}/containers/table`, options)
 }
 async function createContainer(options) {
     return axios.post(`${env.VITE_FIREBASE_API}/containers/create`, options)

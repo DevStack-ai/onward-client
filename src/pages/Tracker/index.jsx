@@ -71,7 +71,7 @@ function Tracker() {
 
     useEffect(() => {
         fetchAllData()
-    }, [])
+    }, [page])
 
     return (<>
         <Dropzone show={dropzone} toggle={toggleDropzone} handleChange={readFiles} />
@@ -96,7 +96,7 @@ function Tracker() {
                         <button
                             type="button"
                             className="btn btn-icon btn-primary ms-3"
-                            onClick={containers.length ?  fetchData : fetchAllData}
+                            onClick={containers.length ? fetchData : fetchAllData}
                         >
                             <span className="svg-icon svg-icon px-4">
                                 <i class='bx bx-search-alt-2' ></i>
@@ -139,10 +139,10 @@ function Tracker() {
                                     {data.map((row, idx) => (
                                         <tr className='cursor-pointer' key={idx}>
                                             <th>{row.reference}</th>
-                                            <th>{row.LoadingDate?.Date}</th>
-                                            <th>{row.DepartureDate?.Date}</th>
-                                            <th>{row.DischargeDate?.Date}</th>
-                                            <th>{row.ArrivalDate?.Date}</th>
+                                            <th>{row.close_date}</th>
+                                            <th>{row.checkout_date}</th>
+                                            <th>{row.departure_data}</th>
+                                            <th>{row.arrival_date}</th>
 
                                             <td className='actions-container text-center' onClick={() => navigate(`/containers/details/${row.uid}`)}>
                                                 <div className='actions'>
@@ -155,17 +155,17 @@ function Tracker() {
                                     ))}
                                 </tbody>
                             </table>
-                            <div className='d-flex justify-content-end'>
 
-                                <Pagination
-                                    className="pagination-bar"
-                                    currentPage={page}
-                                    totalCount={total}
-                                    pageSize={itemsPerPage}
-                                    onPageChange={page => setPage(page)} />
-                            </div>
                         </div>
+                        <div className='d-flex justify-content-end'>
 
+                            <Pagination
+                                className="pagination-bar"
+                                currentPage={page}
+                                totalCount={total}
+                                pageSize={itemsPerPage}
+                                onPageChange={page => setPage(page)} />
+                        </div>
                     </div>
                 </div>
             </div>

@@ -28,7 +28,7 @@ function Users() {
 
     useEffect(() => {
         fetch()
-    }, [])
+    }, [page])
 
     return (
         <div className='container'>
@@ -93,17 +93,15 @@ function Users() {
                                     ))}
                                 </tbody>
                             </table>
-                            <div className='d-flex justify-content-end'>
-
-                                <Pagination
-                                    className="pagination-bar"
-                                    currentPage={page}
-                                    totalCount={total}
-                                    pageSize={itemsPerPage}
-                                    onPageChange={page => setPage(page)} />
-                            </div>
                         </div>
-
+                        <div className='d-flex justify-content-end'>
+                            <Pagination
+                                className="pagination-bar"
+                                currentPage={page}
+                                totalCount={total}
+                                pageSize={itemsPerPage}
+                                onPageChange={page => setPage(page)} />
+                        </div>
                     </div>
                 </div>
             </div>
