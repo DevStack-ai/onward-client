@@ -1,6 +1,5 @@
 import React, { useCallback, useEffect, useState } from 'react'
 import Dropzone from '@components/dropzone'
-import { readFile } from "@helpers/readFile"
 import TagsInput from '../../components/form/TagsInputs'
 import Loading from "@components/loading"
 import { useAuth } from "../../providers"
@@ -21,19 +20,7 @@ function Tracker() {
     const [itemsPerPage,] = useState(10)
     const [total, setTotal] = useState(0)
 
-
-
     const toggleDropzone = () => useDropzone(!dropzone)
-
-
-    const readFiles = async (file) => {
-        const data = await readFile(file)
-        const rows = data.map(row => row[0])
-        const containers = rows.filter(row => row)
-        const clean = containers.map(container => container.replace(/[^a-zA-Z0-9]/g, ''));
-        setContainers(clean)
-        toggleDropzone()
-    }
 
     const fetchData = async () => {
 
@@ -61,20 +48,23 @@ function Tracker() {
 
     }
     const fetchAllData = useCallback(async () => {
-        setIsLoading(true)
-        const query = await getTableContainers({ page, itemsPerPage })
-        const response = query.data
-        setData(response.documents)
-        setTotal(response.total)
-        setIsLoading(false)
+        if (!dropzone) {
+
+            setIsLoading(true)
+            const query = await getTableContainers({ page, itemsPerPage })
+            const response = query.data
+            setData(response.documents)
+            setTotal(response.total)
+            setIsLoading(false)
+        }
     }, [page, itemsPerPage])
 
     useEffect(() => {
         fetchAllData()
-    }, [page])
+    }, [page, dropzone])
 
     return (<>
-        <Dropzone show={dropzone} toggle={toggleDropzone} handleChange={readFiles} />
+        <Dropzone show={dropzone} toggle={toggleDropzone} />
         <div className='container'>
             <h2 className='text-white'>Contenedores</h2>
 
@@ -114,7 +104,7 @@ function Tracker() {
                 </div>
 
                 <div className={`card-body`}>
-                    <div >
+                    <div>
                         <div className='table-responsive table-overflow tableFixHead'>
                             <table className='table table-row-bordered fs-6 gy-5 table-hover'>
                                 <thead>
