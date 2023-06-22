@@ -262,13 +262,7 @@ function ContainerDetails() {
                                                 {container.BLReferenceNo || "-"}
 
                                             </div>
-                                            <label className={`fw-bold col-sm-12 col-lg-2 col-form-label fw-bold fs-6 mt-4`}>
-                                                Cliente
-                                            </label>
-                                            <div className="text-muted pt-3 fw-bold col-sm-12 col-lg-4 mt-4">
-                                                {container.customer || "-"}
-
-                                            </div>
+                                      
                                             <label className={`fw-bold col-sm-12 col-lg-2 col-form-label fw-bold fs-6 mt-4`}>
                                                 ShippingLine
                                             </label>

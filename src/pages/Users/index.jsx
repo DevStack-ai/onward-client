@@ -1,34 +1,22 @@
-import React, { useCallback, useEffect, useState } from 'react'
+import React, { useEffect } from 'react'
 import { getUsers } from './_requests'
-import Loading from "@components/loading"
-import Pagination from "@components/table/pagination"
+
 import { useNavigate } from 'react-router-dom'
+import { useTable } from '../../hooks/useTable'
+import { Columns } from "./_helpers"
+import Table from '../../components/table'
 
 function Users() {
 
     const navigate = useNavigate()
 
-    const [isLoading, setIsLoading] = useState(true)
-    const [documents, setDocuments] = useState([])
-    const [page, setPage] = useState(1)
-    const [itemsPerPage,] = useState(10)
-    const [total, setTotal] = useState(0)
+    const { dataCount, dataList, helpers } = useTable({ fetch: getUsers })
 
 
-    const fetch = useCallback(async () => {
-        setIsLoading(true);
-        const query = await getUsers({ page, itemsPerPage })
-        const response = query.data
-        setDocuments(response.documents)
-        setTotal(response.total)
-
-        setIsLoading(false);
-
-    }, [page, itemsPerPage])
 
     useEffect(() => {
-        fetch()
-    }, [page])
+        helpers.fetchData()
+    }, [])
 
     return (
         <div className='container'>
@@ -59,50 +47,13 @@ function Users() {
                     </div>
                 </div>
                 <div className={`card-body`}>
-                    <div >
-                        <div className='table-responsive table-overflow tableFixHead'>
-                            <table className='table table-row-bordered fs-6 gy-5 table-hover'>
-                                <thead>
-                                    <tr className="text-start text-gray-400 fw-bolder fs-6 text-uppercase gs-0">
-                                        <th scope="col" className='mobile-th bg-white'>Email</th>
-                                        <th scope="col" className='mobile-th bg-white'>Rol</th>
-                                        <th scope="col" className='mobile-th bg-white text-center'>Acciones</th>
-                                    </tr>
-                                </thead>
-                                <tbody className="fw-bold  tbody-container">
-                                    {isLoading &&
-                                        (<tr className='text-center '>
-                                            <th colSpan='8'><Loading /></th>
-                                        </tr>)}
-                                    {(!isLoading && !documents.length) &&
-                                        (<tr className='text-center '>
-                                            <th colSpan='8'>No hay datos</th>
-                                        </tr>)}
-                                    {documents.map((row, idx) => (
-                                        <tr className='cursor-pointer' key={idx}>
-                                            <th>{row.email}</th>
-                                            <td>{row.role}</td>
-                                            <td className='actions-container text-center' onClick={() => navigate(`/users/${row.uid}`)}>
-                                                <div className='actions'>
-                                                    <span className="svg-icon svg-icon-lg px-4 text-muted">
-                                                        <i className='bx bxs-chevron-right' ></i>
-                                                    </span>
-                                                </div>
-                                            </td>
-                                        </tr>
-                                    ))}
-                                </tbody>
-                            </table>
-                        </div>
-                        <div className='d-flex justify-content-end'>
-                            <Pagination
-                                className="pagination-bar"
-                                currentPage={page}
-                                totalCount={total}
-                                pageSize={itemsPerPage}
-                                onPageChange={page => setPage(page)} />
-                        </div>
-                    </div>
+                    <Table
+                        columnList={Columns}
+                        dataList={dataList}
+                        dataCount={dataCount}
+                        rowEvent={(row) => navigate(`/users/${row.uid}`)}
+                        {...helpers}
+                    />
                 </div>
             </div>
         </div>

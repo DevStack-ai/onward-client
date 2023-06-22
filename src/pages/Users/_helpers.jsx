@@ -14,3 +14,28 @@ export const defaultValues = {
     role: "user"
 }
 export const roles = ["user", "admin"]
+export const Columns = [
+    {
+        title: "No.",
+        accesor: "",
+        cell: (row) => <td>{row.index + 1}</td>
+    },
+    {
+        title: "email"
+    },
+    {
+        title: "Rol",
+        accesor: "role"
+    },
+    {
+        title: "Acciones",
+        className: 'actions-container text-center',
+        cell: () => <>
+            <div className='actions'>
+                <span className="svg-icon svg-icon-lg px-4 text-muted">
+                    <i className='bx bxs-chevron-right' ></i>
+                </span>
+            </div>
+        </>
+    }
+]

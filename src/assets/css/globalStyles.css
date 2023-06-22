@@ -34,6 +34,8 @@ h5 {
     font-size: 1.5em;
 }
 
+
+
 .card-container {
     border: none;
     border-radius: 20px;
@@ -88,23 +90,23 @@ h5 {
     opacity: 0;
 }
 
-.fw-bold{
+.fw-bold {
     font-weight: bold;
 }
-.tableFixHead {
-    overflow: auto;
-    height: 100px;
+
+.mobile-th {
+    width: 500px;
 }
 
-.tableFixHead thead th {
-    position: sticky;
-    top: 0;
-    z-index: 1;
+.middle {
+    min-width: 100px;
 }
-
+.large {
+    min-width: 200px;
+}
 .table-overflow {
     min-height: 60vh;
-    overflow-y: scroll;
+    overflow-x: scroll;
 }
 
 @media (min-width: 768px) {

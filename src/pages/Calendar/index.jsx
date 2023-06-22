@@ -12,7 +12,6 @@ function Calendar() {
 
     const [isLoading, setIsLoading] = useState(false)
     const [events, setEvents] = useState([])
-    const [containers, setContainers] = useState([])
 
     const fetchAllData = useCallback(async () => {
         setIsLoading(true)
@@ -24,17 +23,17 @@ function Calendar() {
 
         let events = []
         for (const container of containers) {
-            const ref = container.container || container.reference || container.reference_alt
+            const ref =  container.reference || container.reference_alt || container.container
 
             const base = {
                 groupId: container.uid,
+                title: `${ref} | ${container.status}`,
                 className: "cursor-pointer"
             }
 
             if (container.close_date) {
                 events.push({
                     ...base,
-                    title: `${ref} | Fecha de cierre`,
                     date: container.close_date,
                     backgroundColor: "#444444",
                 })
@@ -42,7 +41,6 @@ function Calendar() {
             if (container.checkout_date) {
                 events.push({
                     ...base,
-                    title: `${ref} | Salida de bodega`,
                     date: container.checkout_date,
                     backgroundColor: "#3F88C5",
                 })
@@ -50,7 +48,6 @@ function Calendar() {
             if (container.departure_data) {
                 events.push({
                     ...base,
-                    title: `${ref} | Zarpe`,
                     date: container.departure_data,
                     backgroundColor: "#D67709",
                 })
@@ -58,7 +55,6 @@ function Calendar() {
             if (container.arrival_date) {
                 events.push({
                     ...base,
-                    title: `${ref} | Arribo`,
                     date: container.arrival_date,
                     backgroundColor: "#A81917"
                 })
@@ -66,7 +62,6 @@ function Calendar() {
             if (container.estimated_date) {
                 events.push({
                     ...base,
-                    title: `${ref} | Estimada de Entrega`,
                     date: container.estimated_date,
                     backgroundColor: "#63458A"
                 })
@@ -74,14 +69,12 @@ function Calendar() {
             if (container.delivery_date) {
                 events.push({
                     ...base,
-                    title: `${ref} | Entrega`,
                     date: container.delivery_date,
                     backgroundColor: "#1E441E"
                 })
             }
         }
         setEvents(events)
-        setContainers(containers)
         setIsLoading(false)
     }, [])
 
@@ -97,7 +90,6 @@ function Calendar() {
     return (<>
         <div className='container'>
             <div className='card-container'>
-
                 {isLoading && <Loading />}
                 {!isLoading && <>
                     <FullCalendar

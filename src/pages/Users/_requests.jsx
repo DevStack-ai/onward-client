@@ -15,3 +15,5 @@ async function deleteUser(uid) {
     return axios.delete(`${env.VITE_FIREBASE_API}/users/${uid}`)
 }
 export { getUsers, createUser, updateUser, deleteUser }
+
+
