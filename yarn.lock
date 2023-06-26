@@ -971,11 +971,6 @@ brace-expansion@^1.1.7:
     balanced-match "^1.0.0"
     concat-map "0.0.1"
 
-calendar-base@^0.2.1:
-  version "0.2.1"
-  resolved "https://registry.yarnpkg.com/calendar-base/-/calendar-base-0.2.1.tgz#cecefc827901aca2082f847db8cd2f1c26bf1596"
-  integrity sha512-cCdp1PRro3kPjH6CdoIMq6PRRWSz4rKchJ4C+7ja7ZL0OaFmmcrF8w4qCvY2W2UbunkrE/Pea3ey8LTneEzPDQ==
-
 call-bind@^1.0.0, call-bind@^1.0.2:
   version "1.0.2"
   resolved "https://registry.yarnpkg.com/call-bind/-/call-bind-1.0.2.tgz#b1d4e89e688119c3c9a903ad30abb2f6a919be3c"
@@ -1005,7 +1000,7 @@ chalk@^4.0.0:
     ansi-styles "^4.1.0"
     supports-color "^7.1.0"
 
-classnames@^2.2.4, classnames@^2.3.2:
+classnames@^2.3.2:
   version "2.3.2"
   resolved "https://registry.yarnpkg.com/classnames/-/classnames-2.3.2.tgz#351d813bf0137fcc6a76a16b88208d2560a0d924"
   integrity sha512-CSbhY4cFEJRe6/GQzIk5qXZ4Jeg5pcsP7b5peFSDpffpe1cqjASH/n9UTjBwOp6XpMSTwQ8Za2K5V02ueA7Tmw==
@@ -1993,11 +1988,6 @@ minimatch@^3.0.5, minimatch@^3.1.1, minimatch@^3.1.2:
   dependencies:
     brace-expansion "^1.1.7"
 
-moment@^2.29.4:
-  version "2.29.4"
-  resolved "https://registry.yarnpkg.com/moment/-/moment-2.29.4.tgz#3dbe052889fe7c1b2ed966fcb3a77328964ef108"
-  integrity sha512-5LC9SOxjSc2HF6vO2CyuTDNivEdoz2IvyJJGj6X8DJ0eFyfszE0QiEd+iXmBvUP3WHxSjFH/vIsA0EN00cgr8w==
-
 ms@2.1.2:
   version "2.1.2"
   resolved "https://registry.yarnpkg.com/ms/-/ms-2.1.2.tgz#d09d1f357b443f493382a8eb3ccd183872ae6009"
@@ -2289,14 +2279,6 @@ react-dropzone@^14.2.3:
     attr-accept "^2.2.2"
     file-selector "^0.6.0"
     prop-types "^15.8.1"
-
-react-event-calendar@0.3.0:
-  version "0.3.0"
-  resolved "https://registry.yarnpkg.com/react-event-calendar/-/react-event-calendar-0.3.0.tgz#b4d7d288f8fc5645fabcc120f736a66f6cd6935d"
-  integrity sha512-PWj+85KUdhDRBGd52CKVifPHeSC+PzueHLYdsdALyC/eMlRtfB5wMzrwfNZkhu9ZJsMJyDbMOgnQOgbUDi0s+w==
-  dependencies:
-    calendar-base "^0.2.1"
-    classnames "^2.2.4"
 
 react-fast-compare@^2.0.1:
   version "2.0.4"

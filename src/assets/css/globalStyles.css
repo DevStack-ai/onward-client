@@ -86,10 +86,41 @@ h5 {
     padding: 50px 0px 0px 280px;
 }
 
+.container-onward {
+    padding: 0 50px;
+}
+
 .opacity-0 {
     opacity: 0;
 }
 
+.td-ok {
+    background-color: rgb(106, 204, 106) !important;
+    color: white !important;
+    font-weight: bold !important;
+    --bs-table-accent-bg: transparent !important;
+}
+
+.td-ok:hover {
+    background-color: rgb(106, 204, 106) !important;
+    color: white !important;
+    font-weight: bold !important;
+}
+
+.td-nook {
+    background-color: rgb(219, 77, 77) !important;
+    color: white !important;
+    font-weight: bold !important;
+    --bs-table-accent-bg: transparent !important;
+
+}
+.td-nook:hover {
+    background-color: rgb(219, 77, 77) !important;
+    color: white !important;
+    font-weight: bold !important;
+    --bs-table-accent-bg: transparent !important;
+
+}
 .fw-bold {
     font-weight: bold;
 }
@@ -98,12 +129,18 @@ h5 {
     width: 500px;
 }
 
+.smaller {
+    min-width: 50px;
+}
+
 .middle {
     min-width: 100px;
 }
+
 .large {
     min-width: 200px;
 }
+
 .table-overflow {
     min-height: 60vh;
     overflow-x: scroll;
@@ -134,6 +171,10 @@ h5 {
 
     .login-container {
         width: 100%;
+    }
+
+    .container-onward {
+        padding: 0 10px;
     }
 }
 

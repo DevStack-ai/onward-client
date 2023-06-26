@@ -7,6 +7,7 @@ import { useNavigate } from 'react-router-dom'
 import { useTable } from '../../hooks/useTable'
 import Table from '../../components/table'
 import { Columns } from "./_helpers"
+import FilterModal from '../../components/form/FilterModal'
 function Tracker() {
     const navigate = useNavigate()
     const { currentUser } = useAuth()
@@ -15,11 +16,12 @@ function Tracker() {
 
     const [downloadReport, setDownloadReport] = useState(false)
     const [dropzone, useDropzone] = useState(false)
-
+    const [filters, setFilters] = useState(false)
 
     const { dataCount, dataList, helpers } = useTable({ fetch: getTableContainers })
 
     const toggleDropzone = () => useDropzone(!dropzone)
+    const toggleFilter = () => setFilters(!filters)
 
     const queryData = async () => {
         helpers.setIsLoading(true)
@@ -53,7 +55,8 @@ function Tracker() {
 
     return (<>
         <Dropzone show={dropzone} toggle={toggleDropzone} />
-        <div className='container'>
+        <FilterModal show={filters} toggle={toggleFilter} helpers={helpers}/>
+        <div className='container-onward'>
             <h2 className='text-white'>Contenedores</h2>
 
             <div className='card-container '>
@@ -62,6 +65,15 @@ function Tracker() {
                 <div className={`card-header d-flex justify-content-between`}>
                     <div className="d-flex align-items-center col-lg-6 col-sm-12">
                         <TagsInput tags={containers} setTags={setContainers} />
+                        <button
+                            type="button"
+                            className="btn btn-icon btn-secondary ms-3"
+                            onClick={toggleFilter}
+                        >
+                            <span className="svg-icon svg-icon px-4">
+                                <i class='bx bxs-filter-alt'></i>
+                            </span>
+                        </button>
                         <button
                             type="button"
                             className="btn btn-icon btn-secondary ms-3"

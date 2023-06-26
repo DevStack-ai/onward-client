@@ -19,10 +19,10 @@ function Table({
     return <>
         <div>
             <div className='table-responsive'>
-                <table className='table table-row-bordered fs-6 gy-5 table-hover'>
-                    <thead>
-                        <tr className="text-start  fw-bolder fs-6 text-uppercase gs-0">
-                            {columns.map((column, idx) => (<th key={idx} className={`middle ${column.className}"`}>{column.title}</th>))}
+                <table className='table table-row-bordered table-striped table-hover '>
+                    <thead clas>
+                        <tr className="text-start fw-bolder fs-6 text-uppercase gs-0">
+                            {columns.map((column, idx) => (<th key={idx} className={`middle text-center ${column.className}"`}>{column.title}</th>))}
                         </tr>
                     </thead>
                     <tbody className="fw-bold tbody-container">
@@ -37,7 +37,7 @@ function Table({
                         {dataList.map((row, idx) => (
                             <tr className='cursor-pointer' key={idx} onClick={() => rowEvent(row)}>
                                 {columns.map((column) => {
-                                    if (column.cell) return column.cell({ ...row, index: idx })
+                                    if (column.cell) return column.cell({ ...row, index: idx, value: row[column.accesor || column.title] })
                                     return <td className={column.className || ''}>
                                         {row[column.accesor || column.title]}
                                     </td>

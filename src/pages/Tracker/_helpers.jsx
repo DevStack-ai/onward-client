@@ -31,11 +31,13 @@ export const defaultValues = {
 
 }
 
+const isOK = (str) => ["OK", "LIBERADO"].includes(str) ? "td-ok" : "td-nook"
 
 export const Columns = [{
     title: "No.",
     accesor: "",
-    cell: (row) => <td>{row.index + 1}</td>
+    className: "smaller",
+    cell: (row) => <td className='text-center'>{row.index + 1}</td>
 },
 {
     title: "REF",
@@ -61,12 +63,13 @@ export const Columns = [{
 {
     title: "Status BPO",
     accesor: "status",
+    cell: (container) => <td className="large">{container.bpo_livemapurl ? <a href={container.bpo_livemapurl} target='_blank'>{container.status}</a> : container.status}</td>,
     className: "large"
 },
 {
     title: "Status Externo",
     accesor: "Status",
-    cell: (container) => <td className="large">{container.LiveMapUrl ? <a href={container.LiveMapUrl} target='_blank'>{container.Status}</a> : container.Status}</td>, 
+    cell: (container) => <td className="large">{container.LiveMapUrl ? <a href={container.LiveMapUrl} target='_blank'>{container.Status}</a> : container.Status}</td>,
     className: "large"
 },
 {
@@ -92,14 +95,17 @@ export const Columns = [{
 },
 {
     title: "FDA",
+    cell: (container) => <td className={`large ${isOK(container.value)}`}>{container.value}</td>,
     accesor: "fda",
 },
 {
     title: "CBP",
+    cell: (container) => <td className={`large ${isOK(container.value)}`}>{container.value}</td>,
     accesor: "cbp",
 },
 {
     title: "USDA",
+    cell: (container) => <td className={`large ${isOK(container.value)}`}>{container.value}</td>,
     accesor: "usda",
 },
 {
@@ -123,11 +129,13 @@ export const Columns = [{
 {
     title: "OBS",
     accesor: "obs",
+    className: "large"
+
 },
 { title: "ContainerNumber", },
 { title: "Message", },
 { title: "StatusId", },
-{ title: "ReferenceNo", },
+{ title: "ReferenceNo", className: "large" },
 { title: "ShippingLine", },
 { title: "FromCountry", },
 { title: "Pol", },
@@ -136,7 +144,7 @@ export const Columns = [{
 { title: "VesselIMO", },
 { title: "GateOutDate", },
 { title: "FormatedTransitTime", },
-{ title: "Ultima actualizacion", accesor: "last_api_request"},
+{ title: "Ultima actualizacion", accesor: "last_api_request" },
 
 {
     title: "Acciones",
@@ -149,4 +157,20 @@ export const Columns = [{
         </div>
     </>
 }
+]
+
+export const statusOptions = [
+    "CERRADO - APROBADO POR EL CLIENTE",
+    "STAND BY",
+    "ANULADO",
+    "EN PROCESO",
+    "PROCESO TERMINADO",
+    "TRANSITO TERR. A PTO.",
+    "TRANSITO MARITIMO",
+    "PUERTO DE DESTINO",
+    "EN EXAMEN / HOLD",
+    "LIBERADO",
+    "EN PROCESO DE ENTREGA",
+    "ENTREGADO",
+    "PAGADO"
 ]

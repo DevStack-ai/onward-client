@@ -1,7 +1,7 @@
 import React, { useCallback, useEffect, useState } from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
 import Loading from '../../components/loading'
-import { CreateSchema, EditSchema, defaultValues } from './_helpers'
+import { CreateSchema, EditSchema, defaultValues, statusOptions } from './_helpers'
 import { Formik, Form } from 'formik';
 import { FormikField } from '../../components/form/FormikField';
 import { getContainer, updateContainer, deleteContainer, createContainer } from './_requests'
@@ -171,12 +171,20 @@ function ContainerEdit() {
                                                     </label>
                                                     <div className="col-sm-12 col-lg-4 mt-4">
                                                         <FormikField
+                                                            as="select"
                                                             type="text"
                                                             name="status"
                                                             errors={errors}
                                                             fieldStyle="solid"
                                                             touched={touched}
-                                                        />
+                                                        >
+                                                            <option value="">Seleccione una opcion</option>
+                                                            {statusOptions.map((option, key) => {
+                                                                return (
+                                                                    <option key={key} value={option}>{option}</option>
+                                                                )
+                                                            })}
+                                                        </FormikField>
                                                     </div>
 
                                                     <label className={`col-sm-12 col-lg-2 col-form-label fw-bold fs-6 mt-4`}>
@@ -337,11 +345,23 @@ function ContainerEdit() {
                                                             touched={touched}
                                                         />
                                                     </div>
+                                                    <label className={`col-sm-12 col-lg-2 col-form-label fw-bold fs-6 mt-4`}>
+                                                        BPO LiveMapUrl
+                                                    </label>
+                                                    <div className="col-sm-12 col-lg-10 mt-4">
+                                                        <FormikField
+                                                            type="text"
+                                                            name="bpo_livemapurl"
+                                                            errors={errors}
+                                                            fieldStyle="solid"
+                                                            touched={touched}
+                                                        />
+                                                    </div>
                                                 </div>
                                                 <div className='mt-5'>
                                                     <div className='d-flex justify-content-between flex-row-reverse'>
                                                         <div className='gap-2'>
-                                                            <button type="button" className='btn btn-onward btn-secondary mx-2' onClick={() => navigate("/containers")} >Cancelar</button>
+                                                            <button type="button" className='btn btn-onward btn-secondary mx-2' onClick={() => navigate(-1)} >Cancelar</button>
                                                             <button type="submit" className='btn btn-onward btn-success' disabled={isSubmitting}   >
                                                                 {isSubmitting && <Loading />}
                                                                 {!isSubmitting && document.uid ? "Editar" : "Crear"}

@@ -18,7 +18,7 @@ export const Columns = [
     {
         title: "No.",
         accesor: "",
-        cell: (row) => <td>{row.index + 1}</td>
+        cell: (row) => <td className='text-center'>{row.index + 1}</td>
     },
     {
         title: "email"

@@ -11,15 +11,12 @@ function Users() {
     const navigate = useNavigate()
 
     const { dataCount, dataList, helpers } = useTable({ fetch: getUsers })
-
-
-
     useEffect(() => {
         helpers.fetchData()
     }, [])
 
     return (
-        <div className='container'>
+        <div className='container-onward'>
             <h2 className='text-white'>Usuarios</h2>
             <div className='card-container'>
                 <h6>Buscar</h6>
@@ -40,7 +37,6 @@ function Users() {
                                 <i className='bx bx-refresh bx-icon'></i>
                             </span>
                         </button>
-
                     </div>
                     <div className="card-toolbar col d-flex justify-content-end mt-2">
                         <button className='btn btn-onward btn-success' onClick={() => navigate(`/users/new`)} >Agregar usuario</button>

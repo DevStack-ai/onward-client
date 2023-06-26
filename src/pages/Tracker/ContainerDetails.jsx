@@ -219,6 +219,13 @@ function ContainerDetails() {
                                             {container.obs || "-"}
 
                                         </div>
+                                        <label className={`fw-bold col-sm-12 col-lg-2 col-form-label fw-bold fs-6 mt-4`}>
+                                            BPO LiveMapUrl
+                                        </label>
+                                        <div className="text-muted pt-3 fw-bold col-sm-12 col-lg-4 mt-4">
+                                            {container.bpo_livemapurl ? <a href={container.bpo_livemapurl} target='_blank'>Map</a> : "-"}
+
+                                        </div>
                                     </div>
                                     {container.ContainerNumber && <>
                                         <div className='separator'></div>
@@ -262,7 +269,7 @@ function ContainerDetails() {
                                                 {container.BLReferenceNo || "-"}
 
                                             </div>
-                                      
+
                                             <label className={`fw-bold col-sm-12 col-lg-2 col-form-label fw-bold fs-6 mt-4`}>
                                                 ShippingLine
                                             </label>
