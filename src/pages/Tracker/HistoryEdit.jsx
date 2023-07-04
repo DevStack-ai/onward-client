@@ -4,7 +4,7 @@ import Loading from '../../components/loading'
 import { CreateSchema, EditSchema, defaultValues, statusEditOptions } from './_helpers'
 import { Formik, Form } from 'formik';
 import { FormikField } from '../../components/form/FormikField';
-import { getContainer, updateContainer, deleteContainer, createContainer } from './_requests'
+import { getHistory, updateHistory, deleteHistory, createHistory } from './_requests'
 import toast from 'react-hot-toast';
 
 function ContainerEdit() {
@@ -19,7 +19,7 @@ function ContainerEdit() {
     const fetch = useCallback(async () => {
         if (uid && uid !== "new") {
             setIsLoading(true);
-            const query = await getContainer(uid)
+            const query = await getHistory(uid)
             const response = query.data
             setDocument(response)
         }
@@ -34,14 +34,14 @@ function ContainerEdit() {
         try {
 
             await toast.promise(
-                deleteContainer(document.uid),
+                deleteHistory(document.uid),
                 {
                     loading: 'Eliminando',
                     success: 'Contenedor eliminado',
                     error: 'Ocurrio un error'
                 }
             )
-            navigate("/containers")
+            navigate("/history")
         } catch (err) {
             console.log(err)
         }
@@ -49,7 +49,7 @@ function ContainerEdit() {
 
     return (
         <div className='container '>
-            <h2 className='text-white'>{document.uid ? "Editar" : "Crear"} Contenedor</h2>
+            <h2 className='text-white'>{document.uid ? "Editar" : "Crear"} Historial</h2>
             <div className='card '>
 
                 <div className={`card-body `}>
@@ -71,8 +71,8 @@ function ContainerEdit() {
                                             }
 
                                             const action = !document.uid ?
-                                                () => createContainer(values)
-                                                : () => updateContainer(document.uid, values)
+                                                () => createHistory(values)
+                                                : () => updateHistory(document.uid, values)
 
 
                                             await toast.promise(
@@ -84,7 +84,7 @@ function ContainerEdit() {
                                                 }
                                             )
 
-                                            navigate("/containers")
+                                            navigate("/history")
                                         } catch (err) {
                                             console.log(err)
                                         }

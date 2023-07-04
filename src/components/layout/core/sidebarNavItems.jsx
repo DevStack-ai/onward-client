@@ -19,6 +19,12 @@ export const sidebarNavItems = [
         section: 'containers'
     },
     {
+        display: 'Historial',
+        icon: <i class='bx bx-bar-chart-square' ></i>,
+        to: '/history',
+        section: 'history'
+    },
+    {
         display: 'Calendario',
         icon: <i className='bx bx-calendar'></i>,
         to: '/calendar',

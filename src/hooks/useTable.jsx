@@ -2,14 +2,15 @@ import React, { useState, useEffect, useRef, useCallback } from 'react'
 
 
 export const useTable = ({
-    fetch
+    fetch,
+    defaultFilters = {}
 }) => {
     const [data, setData] = useState([])
     const [isLoading, setIsLoading] = useState(false)
     const [page, setPage] = useState(1)
     const [itemsPerPage, setItemsPerPage] = useState(10)
     const [total, setTotal] = useState(0)
-    const [filters, setFilters] = useState({})
+    const [filters, setFilters] = useState(defaultFilters)
 
     const isMounted = useRef(true);
 
@@ -31,9 +32,11 @@ export const useTable = ({
         setIsLoading(false)
     }, [page, itemsPerPage])
 
-
+    useEffect(() => {
+        fetchData()
+    }, [page])
     const setFilter = (field, value) => setFilters({ ...filters, [field]: value })
-    const resetFilter = () => setFilters({})
+    const resetFilter = () => setFilters(defaultFilters)
 
     return {
         helpers: {

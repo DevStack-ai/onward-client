@@ -15,14 +15,14 @@ function Table({
 }) {
 
     const columns = useMemo(() => columnList)
-
+    const getIndeex = (idx) => ((page - 1) * 10) + idx
     return <>
         <div>
             <div className='table-responsive'>
                 <table className='table table-row-bordered table-striped table-hover '>
-                    <thead clas>
+                    <thead className>
                         <tr className="text-start fw-bolder fs-6 text-uppercase gs-0">
-                            {columns.map((column, idx) => (<th key={idx} className={`middle text-center ${column.className}"`}>{column.title}</th>))}
+                            {columns.map((column, idx) => (<th key={idx} className={`middle text-center ${column.className}"`} style={column.headerStyle ? column.headerStyle : {}}>{column.title}</th>))}
                         </tr>
                     </thead>
                     <tbody className="fw-bold tbody-container">
@@ -37,7 +37,7 @@ function Table({
                         {dataList.map((row, idx) => (
                             <tr className='cursor-pointer' key={idx} onClick={() => rowEvent(row)}>
                                 {columns.map((column) => {
-                                    if (column.cell) return column.cell({ ...row, index: idx, value: row[column.accesor || column.title] })
+                                    if (column.cell) return column.cell({ ...row, index: getIndeex(idx), value: row[column.accesor || column.title] })
                                     return <td className={column.className || ''}>
                                         {row[column.accesor || column.title]}
                                     </td>

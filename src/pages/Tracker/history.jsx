@@ -1,16 +1,14 @@
-import React, { useCallback, useEffect, useState } from 'react'
+import React, {  useEffect, useState } from 'react'
 import Dropzone from '@components/dropzone'
 import TagsInput from '../../components/form/TagsInputs'
-import { useAuth } from "../../providers"
-import { getContainers, getTableContainers, getReport } from "./_requests"
+import { getHistories, getReportHistory, getTableHistory } from "./_requests"
 import { useNavigate } from 'react-router-dom'
 import { useTable } from '../../hooks/useTable'
 import Table from '../../components/table'
-import { Columns, defaultFilters } from "./_helpers"
+import { Columns } from "./_helpers"
 import FilterModal from '../../components/form/FilterModal'
 function Tracker() {
     const navigate = useNavigate()
-    const { currentUser } = useAuth()
 
     const [containers, setContainers] = useState([])
 
@@ -18,14 +16,14 @@ function Tracker() {
     const [dropzone, useDropzone] = useState(false)
     const [filters, setFilters] = useState(false)
 
-    const { dataCount, dataList, helpers } = useTable({ fetch: getTableContainers })
+    const { dataCount, dataList, helpers } = useTable({ fetch: getTableHistory})
 
     const toggleDropzone = () => useDropzone(!dropzone)
     const toggleFilter = () => setFilters(!filters)
 
     const queryData = async () => {
         helpers.setIsLoading(true)
-        const query = await getContainers({ containers })
+        const query = await getHistories({ containers })
         const data = query.data.containers
         setData(data)
         helpers.setIsLoading(false)
@@ -35,7 +33,7 @@ function Tracker() {
         setDownloadReport(true)
         const uids = dataList.map(d => d.uid)
         const unique = [...new Set([...containers, ...uids].filter(d => !!d))]
-        const response = await getReport({ containers: unique })
+        const response = await getReportHistory({ containers: unique })
         const url = window.URL.createObjectURL(new Blob([response.data]));
         const link = document.createElement("a");
         link.href = url;
@@ -57,11 +55,11 @@ function Tracker() {
         <Dropzone show={dropzone} toggle={toggleDropzone} />
         <FilterModal show={filters} toggle={toggleFilter} helpers={helpers}/>
         <div className='container-onward'>
-            <h2 className='text-white'>Contenedores</h2>
+            <h2 className='text-white'>Historial</h2>
 
             <div className='card-container '>
 
-                <h6>Contenedores</h6>
+                <h6>Buscar</h6>
                 <div className={`card-header d-flex justify-content-between`}>
                     <div className="d-flex align-items-center col-lg-6 col-sm-12">
                         <TagsInput tags={containers} setTags={setContainers} />
@@ -99,7 +97,6 @@ function Tracker() {
 
                         </button>}
 
-                        {currentUser.role === "admin" && <button className='btn btn-onward btn-success' onClick={() => navigate("/containers/edit/new")} >Agregar Contenedor</button>}
                     </div>
                 </div>
 
@@ -108,7 +105,7 @@ function Tracker() {
                         columnList={Columns}
                         dataList={dataList}
                         dataCount={dataCount}
-                        rowEvent={(row) => navigate(`/containers/details/${row.uid}`)}
+                        rowEvent={(row) => navigate(`/history/details/${row.uid}`)}
                         {...helpers}
                     />
                 </div>

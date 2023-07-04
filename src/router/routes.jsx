@@ -15,8 +15,11 @@ import { InitProvider } from "../providers/layout"
 import Tracker from "../pages/Tracker"
 import ContainerEdit from "../pages/Tracker/ContainerEdit"
 import ContainerDetails from "../pages/Tracker/ContainerDetails"
-import Calendar from "../pages/Calendar"
+import HistoryEdit from "../pages/Tracker/HistoryEdit"
+import HistoryDetails from "../pages/Tracker/HistoryDetails"
 
+import Calendar from "../pages/Calendar"
+import History from "../pages/Tracker/history"
 import Login from "../pages/Auth/login";
 import Dashboard from '../pages/Dashboard'
 import Users from "../pages/Users";
@@ -39,6 +42,11 @@ const AppRoutes = () => {
                         <Route path="/users" element={<Users />} />
                         <Route path="/users/:id" element={<UserDetails />} />
 
+
+                        <Route path="/history" element={<History />} />
+                        <Route path="/history/edit/:id" element={<HistoryEdit />} />
+                        <Route path="/history/details/:id" element={<HistoryDetails />} />
+                        
                         <Route path="/containers" element={<Tracker />} />
                         <Route path="/containers/edit/:id" element={<ContainerEdit />} />
                         <Route path="/containers/details/:id" element={<ContainerDetails />} />

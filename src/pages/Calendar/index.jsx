@@ -3,7 +3,7 @@ import FullCalendar from '@fullcalendar/react' // must go before plugins
 import dayGridPlugin from '@fullcalendar/daygrid' // a plugin!
 
 import esLocale from '@fullcalendar/core/locales/es'
-import { getAllContainers } from '../Tracker/_requests'
+import { getAllContainers, getAllHistory } from '../Tracker/_requests'
 import Loading from '../../components/loading'
 import { useNavigate } from 'react-router-dom'
 function Calendar() {
@@ -26,9 +26,13 @@ function Calendar() {
     const [date, setDate] = useState("")
     const fetchAllData = useCallback(async () => {
         setIsLoading(true)
-        const query = await getAllContainers()
-        const response = query.data
-        const containers = response.documents
+        const query_containers = await getAllContainers()
+        const query_history = await getAllHistory()
+
+        const response_containers = query_containers.data
+        const response_history = query_history.data
+
+        const containers = [...response_containers.documents, ...response_history.documents]
         let events = []
         for (const container of containers) {
             const ref = container.reference || container.reference_alt || container.container
@@ -56,6 +60,7 @@ function Calendar() {
             if (container.departure_data) {
                 events.push({
                     ...base,
+                    textColor: "#000",
                     date: container.departure_data,
                     backgroundColor: colors.departure_data,
                 })
@@ -128,6 +133,7 @@ function Calendar() {
                     events.push({
                         ...base,
                         date: container.departure_data,
+                        textColor: "#000",
                         backgroundColor: colors.departure_data,
                     })
                 }
@@ -178,6 +184,7 @@ function Calendar() {
                 if (container[date]) {
                     events.push({
                         ...base,
+                        textColor: date === "departure_data" ? "#000" : "#FFF",
                         date: container[date],
                         backgroundColor: colors[date]
                     })

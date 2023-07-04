@@ -1,4 +1,7 @@
 import * as Yup from 'yup';
+import React from 'react'
+import moment from "moment"
+
 
 export const EditSchema = Yup.object().shape({
     reference: Yup.string().required('Campo Obligatorio'),
@@ -31,17 +34,35 @@ export const defaultValues = {
 
 }
 
-const isOK = (str) => ["OK", "LIBERADO"].includes(str) ? "td-ok" : "td-nook"
+const isOK = (str) => str ? ["OK", "LIBERADO"].includes(str) ? "td-ok" : "td-nook" : "td-nok"
+
+export const defaultFilters = {
+    status: {
+        operation: "not-in",
+        value: ["PAGADO", "ANULADO"]
+    }
+}
+export const defaultHistoryFilters = {
+    status: {
+        operation: "in",
+        value: ["PAGADO", "ANULADO"]
+    }
+}
+
+
 
 export const Columns = [{
     title: "No.",
     accesor: "",
     className: "smaller",
+
     cell: (row) => <td className='text-center'>{row.index + 1}</td>
 },
 {
     title: "REF",
     accesor: "reference",
+    className: "ref",
+    headerStyle: { position: "sticky", left: 0, backgroundColor: "#EAEAEA" },
 },
 {
     title: "REF2",
@@ -74,19 +95,26 @@ export const Columns = [{
 },
 {
     title: "Fecha de cierre",
+    cell: (container) => <td className="large">{container.value ? moment(container.value).format("MMMDDYYYY").toUpperCase() : "-"}</td>,
     accesor: "close_date",
 },
 {
     title: "Salida de bodega",
     accesor: "checkout_date",
+    cell: (container) => <td className="large">{container.value ? moment(container.value).format("MMMDDYYYY").toUpperCase() : "-"}</td>,
+
 },
 {
     title: "Zarpe",
     accesor: "departure_data",
+    cell: (container) => <td className="large">{container.value ? moment(container.value).format("MMMDDYYYY").toUpperCase() : "-"}</td>,
+
 },
 {
     title: "Arribo",
     accesor: "arrival_date",
+    cell: (container) => <td className="large">{container.value ? moment(container.value).format("MMMDDYYYY").toUpperCase() : "-"}</td>,
+
 },
 {
     title: "Entry Number",
@@ -111,6 +139,8 @@ export const Columns = [{
 {
     title: "LFD",
     accesor: "lfd",
+    cell: (container) => <td className="large">{container.value ? moment(container.value).format("MMMDDYYYY").toUpperCase() : "-"}</td>,
+
 },
 {
     title: "LFD Fee",
@@ -119,11 +149,15 @@ export const Columns = [{
 {
     title: "Estimada de Entrega",
     accesor: "estimated_date",
+    cell: (container) => <td className="large">{container.value ? moment(container.value).format("MMMDDYYYY").toUpperCase() : "-"}</td>,
+
     className: "large"
 },
 {
     title: "Fecha de Entrega",
     accesor: "delivery_date",
+    cell: (container) => <td className="large">{container.value ? moment(container.value).format("MMMDDYYYY").toUpperCase() : "-"}</td>,
+
     className: "large"
 },
 {
@@ -141,10 +175,21 @@ export const Columns = [{
 { title: "Pol", },
 { title: "Pod", },
 { title: "Vessel", },
-{ title: "VesselIMO", },
-{ title: "GateOutDate", },
+{
+    title: "VesselIMO",
+
+},
+{
+    title: "GateOutDate",
+    cell: (container) => <td className="large">{container.value ? moment(container.value).format("MMMDDYYYY").toUpperCase() : "-"}</td>,
+},
 { title: "FormatedTransitTime", },
-{ title: "Ultima actualizacion", accesor: "last_api_request" },
+{
+    title: "Ultima actualizacion", accesor: "last_api_request",
+
+    cell: (container) => <td className="large">{container.value ? moment(container.value).subtract(6, "hours").format("MMMDDYYYY HH:mm:ss").toUpperCase() : "-"}</td>,
+
+},
 
 {
     title: "Acciones",
@@ -160,6 +205,21 @@ export const Columns = [{
 ]
 
 export const statusOptions = [
+    "CERRADO - APROBADO POR EL CLIENTE",
+    "STAND BY",
+    // "ANULADO",
+    "EN PROCESO",
+    "PROCESO TERMINADO",
+    "TRANSITO TERR. A PTO.",
+    "TRANSITO MARITIMO",
+    "PUERTO DE DESTINO",
+    "EN EXAMEN / HOLD",
+    "LIBERADO",
+    "EN PROCESO DE ENTREGA",
+    "ENTREGADO",
+    // "PAGADO"
+]
+export const statusEditOptions = [
     "CERRADO - APROBADO POR EL CLIENTE",
     "STAND BY",
     "ANULADO",
