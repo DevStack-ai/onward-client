@@ -207,6 +207,7 @@ export const Columns = [{
 export const statusOptions = [
     "CERRADO - APROBADO POR EL CLIENTE",
     "STAND BY",
+    "PROXIMO PROCESO",
     // "ANULADO",
     "EN PROCESO",
     "PROCESO TERMINADO",
@@ -222,6 +223,7 @@ export const statusOptions = [
 export const statusEditOptions = [
     "CERRADO - APROBADO POR EL CLIENTE",
     "STAND BY",
+    "PROXIMO PROCESO",
     "ANULADO",
     "EN PROCESO",
     "PROCESO TERMINADO",
