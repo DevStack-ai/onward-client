@@ -122,6 +122,11 @@ export const Columns = [{
     className: "large"
 },
 {
+    title: "Total Amount",
+    accesor: "total_amount",
+    className: "large"
+},
+{
     title: "FDA",
     cell: (container) => <td className={`large ${isOK(container.value)}`}>{container.value}</td>,
     accesor: "fda",

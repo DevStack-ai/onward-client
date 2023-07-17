@@ -226,6 +226,12 @@ function ContainerDetails() {
                                             {container.bpo_livemapurl ? <a href={container.bpo_livemapurl} target='_blank'>Map</a> : "-"}
 
                                         </div>
+                                        <label className={`fw-bold col-sm-12 col-lg-2 col-form-label fw-bold fs-6 mt-4`}>
+                                            Total Amount
+                                        </label>
+                                        <div className="text-muted pt-3 fw-bold col-sm-12 col-lg-4 mt-4">
+                                            {container.total_amount || "-"}
+                                        </div>
                                     </div>
                                     {container.ContainerNumber && <>
                                         <div className='separator'></div>

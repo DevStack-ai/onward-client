@@ -333,6 +333,30 @@ function ContainerEdit() {
                                                         />
                                                     </div>
                                                     <label className={`col-sm-12 col-lg-2 col-form-label fw-bold fs-6 mt-4`}>
+                                                        BPO LiveMapUrl
+                                                    </label>
+                                                    <div className="col-sm-12 col-lg-4 mt-4">
+                                                        <FormikField
+                                                            type="text"
+                                                            name="bpo_livemapurl"
+                                                            errors={errors}
+                                                            fieldStyle="solid"
+                                                            touched={touched}
+                                                        />
+                                                    </div>
+                                                    <label className={`col-sm-12 col-lg-2 col-form-label fw-bold fs-6 mt-4`}>
+                                                        Total Amount
+                                                    </label>
+                                                    <div className="col-sm-12 col-lg-4 mt-4">
+                                                        <FormikField
+                                                            type="number"
+                                                            name="total_amount"
+                                                            errors={errors}
+                                                            fieldStyle="solid"
+                                                            touched={touched}
+                                                        />
+                                                    </div>
+                                                    <label className={`col-sm-12 col-lg-2 col-form-label fw-bold fs-6 mt-4`}>
                                                         OBS
 
                                                     </label>
@@ -345,18 +369,7 @@ function ContainerEdit() {
                                                             touched={touched}
                                                         />
                                                     </div>
-                                                    <label className={`col-sm-12 col-lg-2 col-form-label fw-bold fs-6 mt-4`}>
-                                                        BPO LiveMapUrl
-                                                    </label>
-                                                    <div className="col-sm-12 col-lg-10 mt-4">
-                                                        <FormikField
-                                                            type="text"
-                                                            name="bpo_livemapurl"
-                                                            errors={errors}
-                                                            fieldStyle="solid"
-                                                            touched={touched}
-                                                        />
-                                                    </div>
+                                                
                                                 </div>
                                                 <div className='mt-5'>
                                                     <div className='d-flex justify-content-between flex-row-reverse'>
