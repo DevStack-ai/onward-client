@@ -32,9 +32,8 @@ const AppRoutes = () => {
 
 
     const { currentUser } = useAuth()
-    console.log("currentUser", currentUser)
     return (
-        <BrowserRouter basename={PUBLIC_URL}>
+        <BrowserRouter basename="/onward">
             <Routes>
                 <Route element={<InitProvider />}>
                     {currentUser && <>

@@ -90,17 +90,29 @@ function ContainerEdit() {
                                         }
                                     }}
                                 >
-                                    {({ errors, touched, isSubmitting }) => (
+                                   {({ errors, touched, isSubmitting, values }) => (
                                         <Form className="form mb-8">
                                             <div className=' d-flex flex-column justify-content-between '>
                                                 <div className="row mb-6 px-0 ms-0 ">
-                                                    <label className={`col-sm-12 col-lg-2 col-form-label fw-bold fs-6`}>
+                                                <label className={`col-sm-12 col-lg-2 col-form-label fw-bold fs-6`}>
                                                         Contenedor
                                                     </label>
-                                                    <div className="col-sm-12 col-lg-10">
+                                                    <div className="col-sm-12 col-lg-4">
                                                         <FormikField
                                                             type="text"
                                                             name="container"
+                                                            errors={errors}
+                                                            fieldStyle="solid"
+                                                            touched={touched}
+                                                        />
+                                                    </div>
+                                                    <label className={`col-sm-12 col-lg-2 col-form-label fw-bold fs-6`}>
+                                                        Doc No
+                                                    </label>
+                                                    <div className="col-sm-12 col-lg-4">
+                                                        <FormikField
+                                                            type="text"
+                                                            name="docto_no"
                                                             errors={errors}
                                                             fieldStyle="solid"
                                                             touched={touched}
@@ -173,12 +185,12 @@ function ContainerEdit() {
                                                         <FormikField
                                                             as="select"
                                                             type="text"
-                                                            name="status"
+                                                            name="status_bpo"
                                                             errors={errors}
                                                             fieldStyle="solid"
                                                             touched={touched}
                                                         >
-                                                            <option value="">Seleccione una opcion</option>
+                                                            <option value="-">Seleccione una opcion</option>
                                                             {statusEditOptions.map((option, key) => {
                                                                 return (
                                                                     <option key={key} value={option}>{option}</option>
@@ -192,6 +204,7 @@ function ContainerEdit() {
                                                     </label>
                                                     <div className="col-sm-12 col-lg-4 mt-4">
                                                         <FormikField
+                                                            value={String(values.close_date || "").split("T")[0]}
                                                             type="date"
                                                             name="close_date"
                                                             errors={errors}
@@ -204,6 +217,7 @@ function ContainerEdit() {
                                                     </label>
                                                     <div className="col-sm-12 col-lg-4 mt-4">
                                                         <FormikField
+                                                            value={String(values.checkout_date || "").split("T")[0]}
                                                             type="date"
                                                             name="checkout_date"
                                                             errors={errors}
@@ -216,6 +230,7 @@ function ContainerEdit() {
                                                     </label>
                                                     <div className="col-sm-12 col-lg-4 mt-4">
                                                         <FormikField
+                                                            value={String(values.departure_data || "").split("T")[0]}
                                                             type="date"
                                                             name="departure_data"
                                                             errors={errors}
@@ -228,6 +243,7 @@ function ContainerEdit() {
                                                     </label>
                                                     <div className="col-sm-12 col-lg-4 mt-4">
                                                         <FormikField
+                                                            value={String(values.arrival_date || "").split("T")[0]}
                                                             type="date"
                                                             name="arrival_date"
                                                             errors={errors}
@@ -288,6 +304,7 @@ function ContainerEdit() {
                                                     </label>
                                                     <div className="col-sm-12 col-lg-4 mt-4">
                                                         <FormikField
+                                                            value={String(values.lfd || "").split("T")[0]}
                                                             type="date"
                                                             name="lfd"
                                                             errors={errors}
@@ -312,6 +329,7 @@ function ContainerEdit() {
                                                     </label>
                                                     <div className="col-sm-12 col-lg-4 mt-4">
                                                         <FormikField
+                                                            value={String(values.estimated_date || "").split("T")[0]}
                                                             type="date"
                                                             name="estimated_date"
                                                             errors={errors}
@@ -325,8 +343,33 @@ function ContainerEdit() {
                                                     </label>
                                                     <div className="col-sm-12 col-lg-4 mt-4">
                                                         <FormikField
+                                                            value={String(values.delivery_date || "").split("T")[0]}
                                                             type="date"
                                                             name="delivery_date"
+                                                            errors={errors}
+                                                            fieldStyle="solid"
+                                                            touched={touched}
+                                                        />
+                                                    </div>
+                                                    <label className={`col-sm-12 col-lg-2 col-form-label fw-bold fs-6 mt-4`}>
+                                                        BPO LiveMapUrl
+                                                    </label>
+                                                    <div className="col-sm-12 col-lg-4 mt-4">
+                                                        <FormikField
+                                                            type="text"
+                                                            name="bpo_livemapurl"
+                                                            errors={errors}
+                                                            fieldStyle="solid"
+                                                            touched={touched}
+                                                        />
+                                                    </div>
+                                                    <label className={`col-sm-12 col-lg-2 col-form-label fw-bold fs-6 mt-4`}>
+                                                        Total Amount
+                                                    </label>
+                                                    <div className="col-sm-12 col-lg-4 mt-4">
+                                                        <FormikField
+                                                            type="number"
+                                                            name="total_amount"
                                                             errors={errors}
                                                             fieldStyle="solid"
                                                             touched={touched}
@@ -345,18 +388,7 @@ function ContainerEdit() {
                                                             touched={touched}
                                                         />
                                                     </div>
-                                                    <label className={`col-sm-12 col-lg-2 col-form-label fw-bold fs-6 mt-4`}>
-                                                        BPO LiveMapUrl
-                                                    </label>
-                                                    <div className="col-sm-12 col-lg-10 mt-4">
-                                                        <FormikField
-                                                            type="text"
-                                                            name="bpo_livemapurl"
-                                                            errors={errors}
-                                                            fieldStyle="solid"
-                                                            touched={touched}
-                                                        />
-                                                    </div>
+
                                                 </div>
                                                 <div className='mt-5'>
                                                     <div className='d-flex justify-content-between flex-row-reverse'>

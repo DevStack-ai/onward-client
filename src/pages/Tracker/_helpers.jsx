@@ -69,6 +69,10 @@ export const Columns = [{
     accesor: "reference_alt",
 },
 {
+    title: "DOC NO",
+    accesor: "docto_no",
+},
+{
     title: "SOURCE",
     accesor: "source",
 },
@@ -83,14 +87,14 @@ export const Columns = [{
 },
 {
     title: "Status BPO",
-    accesor: "status",
-    cell: (container) => <td className="large">{container.bpo_livemapurl ? <a href={container.bpo_livemapurl} target='_blank'>{container.status}</a> : container.status}</td>,
+    accesor: "status_bpo",
+    cell: (container) => <td className="large">{container.bpo_livemapurl ? <a href={container.bpo_livemapurl} target='_blank'>{container.status_bpo}</a> : container.status_bpo}</td>,
     className: "large"
 },
 {
     title: "Status Externo",
-    accesor: "Status",
-    cell: (container) => <td className="large">{container.LiveMapUrl ? <a href={container.LiveMapUrl} target='_blank'>{container.Status}</a> : container.Status}</td>,
+    accesor: "status",
+    cell: (container) => <td className="large">{container.LiveMapUrl ? <a href={container.LiveMapUrl} target='_blank'>{container.status}</a> : container.status}</td>,
     className: "large"
 },
 {

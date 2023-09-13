@@ -50,6 +50,10 @@ body {
 
 .sidebar__menu__item.active {
     color: #fff;
+    width: calc(100% - 70px);
+    margin: 0 10px;
+    border-radius: 10px;
+    background-color: rgb(52, 140, 212);
 }
 
 .sidebar__menu__item__icon {

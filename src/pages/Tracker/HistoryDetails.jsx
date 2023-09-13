@@ -4,6 +4,7 @@ import Loading from '../../components/loading'
 
 import { getHistory, getReportHistory } from './_requests'
 import { useAuth } from '../../providers';
+import moment from "moment"
 
 function ContainerDetails() {
 
@@ -79,8 +80,14 @@ function ContainerDetails() {
                                         <label className={`fw-bold col-sm-12 col-lg-2 col-form-label fw-bold fs-6`}>
                                             Contenedor
                                         </label>
-                                        <div className="text-muted pt-3 fw-bold col-sm-12 col-lg-10">
+                                        <div className="text-muted pt-3 fw-bold col-sm-12 col-lg-4 mt-4">
                                             {container.container || "-"}
+                                        </div>
+                                        <label className={`fw-bold col-sm-12 col-lg-2 col-form-label fw-bold fs-6`}>
+                                            Doc No
+                                        </label>
+                                        <div className="text-muted pt-3 fw-bold col-sm-12 col-lg-4 mt-4">
+                                            {container.docto_no || "-"}
                                         </div>
                                         <label className={`fw-bold col-sm-12 col-lg-2 col-form-label fw-bold fs-6 mt-4`}>
                                             REF
@@ -122,7 +129,7 @@ function ContainerDetails() {
                                             Status BPO
                                         </label>
                                         <div className="text-muted pt-3 fw-bold col-sm-12 col-lg-4 mt-4">
-                                            {container.status || "-"}
+                                            {container.status_bpo || "-"}
 
                                         </div>
 
@@ -130,28 +137,29 @@ function ContainerDetails() {
                                             Fecha de cierre
                                         </label>
                                         <div className="text-muted pt-3 fw-bold col-sm-12 col-lg-4 mt-4">
-                                            {container.close_date || "-"}
+                                            {container.close_date ? moment(container.close_date).format("MMMDDYYYY").toUpperCase() : "-"}
 
                                         </div>
                                         <label className={`fw-bold col-sm-12 col-lg-2 col-form-label fw-bold fs-6 mt-4`}>
                                             Salida de bodega
                                         </label>
                                         <div className="text-muted pt-3 fw-bold col-sm-12 col-lg-4 mt-4">
-                                            {container.checkout_date || "-"}
+                                            {container.checkout_date ? moment(container.checkout_date).format("MMMDDYYYY").toUpperCase() : "-"}
+
 
                                         </div>
                                         <label className={`fw-bold col-sm-12 col-lg-2 col-form-label fw-bold fs-6 mt-4`}>
                                             Zarpe
                                         </label>
                                         <div className="text-muted pt-3 fw-bold col-sm-12 col-lg-4 mt-4">
-                                            {container.departure_data || "-"}
+                                            {container.departure_data ? moment(container.departure_data).format("MMMDDYYYY").toUpperCase() : "-"}
 
                                         </div>
                                         <label className={`fw-bold col-sm-12 col-lg-2 col-form-label fw-bold fs-6 mt-4`}>
                                             Arribo
                                         </label>
                                         <div className="text-muted pt-3 fw-bold col-sm-12 col-lg-4 mt-4">
-                                            {container.arrival_date || "-"}
+                                            {container.arrival_date ? moment(container.arrival_date).format("MMMDDYYYY").toUpperCase() : "-"}
 
                                         </div>
                                         <label className={`fw-bold col-sm-12 col-lg-2 col-form-label fw-bold fs-6 mt-4`}>
@@ -200,7 +208,7 @@ function ContainerDetails() {
                                             Estimada de Entrega
                                         </label>
                                         <div className="text-muted pt-3 fw-bold col-sm-12 col-lg-4 mt-4">
-                                            {container.estimated_date || "-"}
+                                            {container.estimated_date ? moment(container.estimated_date).format("MMMDDYYYY").toUpperCase() : "-"}
 
                                         </div>
                                         <label className={`fw-bold col-sm-12 col-lg-2 col-form-label fw-bold fs-6 mt-4`}>
@@ -208,7 +216,7 @@ function ContainerDetails() {
 
                                         </label>
                                         <div className="text-muted pt-3 fw-bold col-sm-12 col-lg-4 mt-4">
-                                            {container.delivery_date || "-"}
+                                            {container.delivery_date ? moment(container.delivery_date).format("MMMDDYYYY").toUpperCase() : "-"}
 
                                         </div>
                                         <label className={`fw-bold col-sm-12 col-lg-2 col-form-label fw-bold fs-6 mt-4`}>
@@ -225,6 +233,12 @@ function ContainerDetails() {
                                         <div className="text-muted pt-3 fw-bold col-sm-12 col-lg-4 mt-4">
                                             {container.bpo_livemapurl ? <a href={container.bpo_livemapurl} target='_blank'>Map</a> : "-"}
 
+                                        </div>
+                                        <label className={`fw-bold col-sm-12 col-lg-2 col-form-label fw-bold fs-6 mt-4`}>
+                                            Total Amount
+                                        </label>
+                                        <div className="text-muted pt-3 fw-bold col-sm-12 col-lg-4 mt-4">
+                                            {container.total_amount || "-"}
                                         </div>
                                     </div>
                                     {container.ContainerNumber && <>

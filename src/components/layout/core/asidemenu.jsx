@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import '@assets/css/sidebar.css';
 import logo from "@assets/images/logo.png"
@@ -7,20 +7,11 @@ import { useAuth } from '../../../providers';
 
 const Sidebar = () => {
     const [activeIndex, setActiveIndex] = useState(0);
-    const [stepHeight, setStepHeight] = useState(0);
-    const sidebarRef = useRef();
-    const indicatorRef = useRef();
     const location = useLocation();
     const { currentUser, logout } = useAuth()
     const permissionNavs = sidebarNavItems.filter(item => !item.admin || currentUser.role === "admin")
 
-    useEffect(() => {
-        setTimeout(() => {
-            const sidebarItem = sidebarRef.current.querySelector('.sidebar__menu__item');
-            indicatorRef.current.style.height = `${sidebarItem.clientHeight}px`;
-            setStepHeight(sidebarItem.clientHeight);
-        }, 50);
-    }, []);
+
 
     // change active index
     useEffect(() => {
@@ -36,16 +27,8 @@ const Sidebar = () => {
         <div className="sidebar__logo pt-5">
             <img src={logo} width="80%" />
         </div>
-        <div ref={sidebarRef} className="sidebar__menu mt-4">
-            <div
-                ref={indicatorRef}
-                className="sidebar__menu__indicator"
-                style={{
-                    transform: `translateX(-50%) translateY(${activeIndex * stepHeight}px)`
-                }}
-            ></div>
+        <div className="sidebar__menu mt-4">
             {
-
                 permissionNavs.map((item, index) => (
                     <Link to={item.to} key={index} className='no-deco'>
                         <div className={`sidebar__menu__item ${activeIndex === index ? 'active' : ''}`}>
