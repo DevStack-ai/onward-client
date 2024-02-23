@@ -154,7 +154,12 @@ h5 {
     --bs-table-accent-bg: transparent !important;
 
 }
-th, td, tr, tbody {  }
+td, tbody {  
+    border: 1px solid rgba(0, 0, 0, 0.315) !important;
+}
+tr {  
+    border: 1px solid rgba(0, 0, 0, 0.315) !important;
+}
 .ref {
     position: sticky  !important;
     left: 0  !important;
