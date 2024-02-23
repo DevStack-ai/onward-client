@@ -49,6 +49,13 @@ export const defaultHistoryFilters = {
     }
 }
 
+function numberWithCommas(x) {
+    x = Number(x).toFixed(2)
+    var pattern = /(-?\d+)(\d{3})/;
+    while (pattern.test(x))
+        x = x.replace(pattern, "$1,$2");
+    return x;
+}
 
 
 export const Columns = [{
@@ -80,10 +87,15 @@ export const Columns = [{
     title: "COMPANY",
     accesor: "company",
 },
+
 {
-    title: "Cliente",
+    title: "CUSTOMER",
     accesor: "customer",
     className: "large"
+},
+{
+    title: "SOURCE/COUNTRY",
+    accesor: "country",
 },
 {
     title: "Status BPO",
@@ -92,30 +104,30 @@ export const Columns = [{
     className: "large"
 },
 {
-    title: "Status Externo",
+    title: "EXTERNAL STATUS",
     accesor: "status",
     cell: (container) => <td className="large">{container.LiveMapUrl ? <a href={container.LiveMapUrl} target='_blank'>{container.status}</a> : container.status}</td>,
     className: "large"
 },
 {
-    title: "Fecha de cierre",
+    title: "SALES DATE",
     cell: (container) => <td className="large">{container.value ? moment(container.value).format("MMMDDYYYY").toUpperCase() : "-"}</td>,
     accesor: "close_date",
 },
 {
-    title: "Salida de bodega",
+    title: "WH DEPARTURE DATE",
     accesor: "checkout_date",
     cell: (container) => <td className="large">{container.value ? moment(container.value).format("MMMDDYYYY").toUpperCase() : "-"}</td>,
 
 },
 {
-    title: "Zarpe",
+    title: "DEPARTURE DATE",
     accesor: "departure_data",
     cell: (container) => <td className="large">{container.value ? moment(container.value).format("MMMDDYYYY").toUpperCase() : "-"}</td>,
 
 },
 {
-    title: "Arribo",
+    title: "ARRIVAL DATE",
     accesor: "arrival_date",
     cell: (container) => <td className="large">{container.value ? moment(container.value).format("MMMDDYYYY").toUpperCase() : "-"}</td>,
 
@@ -126,9 +138,11 @@ export const Columns = [{
     className: "large"
 },
 {
-    title: "Total Amount",
+    title: "INVOICE AMOUNT",
     accesor: "total_amount",
-    className: "large"
+    className: "large",
+    cell: (container) => <>{container.value ? `$${numberWithCommas(container.value)}` : ""}</>,
+
 },
 {
     title: "FDA",
@@ -156,14 +170,14 @@ export const Columns = [{
     accesor: "lfd_fee",
 },
 {
-    title: "Estimada de Entrega",
+    title: "EST DELIVERY DATE",
     accesor: "estimated_date",
     cell: (container) => <td className="large">{container.value ? moment(container.value).format("MMMDDYYYY").toUpperCase() : "-"}</td>,
 
     className: "large"
 },
 {
-    title: "Fecha de Entrega",
+    title: "DELIVERY DATE",
     accesor: "delivery_date",
     cell: (container) => <td className="large">{container.value ? moment(container.value).format("MMMDDYYYY").toUpperCase() : "-"}</td>,
 
@@ -175,7 +189,7 @@ export const Columns = [{
     className: "large"
 
 },
-{ title: "ContainerNumber", },
+{ title: "CONTAINER #", accesor:"ContainerNumber" },
 { title: "Message", },
 { title: "StatusId", },
 { title: "ReferenceNo", className: "large" },

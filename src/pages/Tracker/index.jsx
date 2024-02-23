@@ -55,13 +55,13 @@ function Tracker() {
 
     return (<>
         <Dropzone show={dropzone} toggle={toggleDropzone} />
-        <FilterModal show={filters} toggle={toggleFilter} helpers={helpers}/>
+        <FilterModal show={filters} toggle={toggleFilter} helpers={helpers} />
         <div className='container-onward'>
-            <h2 className='text-white'>Contenedores</h2>
+            <h2 className='text-white'>CONTAINERS</h2>
 
             <div className='card-container '>
 
-                <h6>Contenedores</h6>
+                <h6>Containers</h6>
                 <div className={`card-header d-flex justify-content-between`}>
                     <div className="d-flex align-items-center col-lg-6 col-sm-12">
                         <TagsInput tags={containers} setTags={setContainers} />
@@ -95,11 +95,11 @@ function Tracker() {
                     </div>
                     <div className="card-toolbar ">
                         {!!dataList.length && <button className='btn btn-onward btn-secondary mx-2' onClick={generateFile} >
-                            {downloadReport ? <>Descargando...</> : <><i className='bx bxs-file-export'></i> Descargar</>}
+                            {downloadReport ? <>Downloading...</> : <><i className='bx bxs-file-export'></i> Download</>}
 
                         </button>}
 
-                        {currentUser.role === "admin" && <button className='btn btn-onward btn-success' onClick={() => navigate("/containers/edit/new")} >Agregar Contenedor</button>}
+                        {currentUser.role === "admin" && <button className='btn btn-onward btn-success' onClick={() => navigate("/containers/edit/new")} >Adding Container</button>}
                     </div>
                 </div>
 

@@ -101,22 +101,21 @@ function UsersDetails() {
                                                             disabled={document.uid}
                                                         />
                                                     </div>
-                                                    {!document.uid &&
-                                                        <>
-                                                            <label className={`col-sm-12 col-lg-2 col-form-label ${!document.uid ? "required" : ''} fw-bold fs-6`}>
-                                                                Contraseña
-                                                            </label>
-                                                            <div className="col-sm-12 col-lg-10">
-                                                                <FormikField
-                                                                    type="password"
-                                                                    name="password"
-                                                                    placeholder="Contraseña"
-                                                                    fieldStyle="solid"
-                                                                    errors={errors}
-                                                                    touched={touched}
-                                                                />
-                                                            </div>
-                                                        </>}
+
+                                                    <label className={`col-sm-12 col-lg-2 col-form-label ${!document.uid ? "required" : ''} fw-bold fs-6`}>
+                                                        Contraseña
+                                                    </label>
+                                                    <div className="col-sm-12 col-lg-10">
+                                                        <FormikField
+                                                            type="password"
+                                                            name="password"
+                                                            placeholder="Contraseña"
+                                                            fieldStyle="solid"
+                                                            errors={errors}
+                                                            touched={touched}
+                                                        />
+                                                    </div>
+
                                                     <label className={`col-sm-12 col-lg-2 col-form-label ${!document.uid ? "required" : ''} fw-bold fs-6 `}>
                                                         Rol
                                                     </label>
